@@ -50,24 +50,39 @@ public class CreateResponse implements IResponse {
 
         // Content of the file
         String xml_start = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + "\n"
-                + "<!DOCTYPE code SYSTEM \"product.dtd\">" + "\n"
-                + "<code type=\"x001\"> " + "\n"
-                + "<products>\n\t";
+                + "<!DOCTYPE code SYSTEM \"" + FOLDER_DTD + SEPARATOR + "product.dtd\">" + "\n"
+                + "<code type=\"x001\"> " + "\n\t"
+                + "<products>\n\t\t";
 
         String xml_body = "";
-        for (Product p : res) {
-            xml_body += "<product>" + "\n\t\t"
-                    + "<ref>" + p.getRef() + "</ref>" + "\n\t\t"
-                    + "<date_issue>" + p.getDate() + "</date_issue>" + "\n\t\t"
-                    + "<brand>" + p.getBrand() + "</brand>" + "\n\t\t"
-                    + "<name>" + p.getName() + "</name>" + "\n\t\t"
-                    + "<category>" + p.getCategory().getName() + "</category>" + "\n\t\t"
-                    + "<client>\n\t\t\t"
-                    + "<firstname>" + p.getClient().getFirstname() + "</firstname>\n\t\t\t"
-                    + "<lastname>" + p.getClient().getLastname() + "</lastname>\n\t\t"
-                    + "</client>" + "\n\t"
-                    + "</product>" + "\n";
 
+        // If there is no result then create the balise without content
+        if (res.size() == 0) {
+            xml_body += "<product>" + "\n\t\t"
+                    + "<ref>" + "</ref>" + "\n\t\t\t"
+                    + "<date_issue>" + "</date_issue>" + "\n\t\t\t"
+                    + "<brand>" + "</brand>" + "\n\t\t\t"
+                    + "<name>" + "</name>" + "\n\t\t\t"
+                    + "<category>" + "</category>" + "\n\t\t\t"
+                    + "<client>\n\t\t\t\t"
+                    + "<firstname>" + "</firstname>\n\t\t\t\t"
+                    + "<lastname>" + "</lastname>\n\t\t\t"
+                    + "</client>" + "\n\t\t"
+                    + "</product>" + "\n\t";
+        } else {
+            for (Product p : res) {
+                xml_body += "<product>" + "\n\t\t"
+                        + "<ref>" + p.getRef() + "</ref>" + "\n\t\t\t"
+                        + "<date_issue>" + p.getDate() + "</date_issue>" + "\n\t\t\t"
+                        + "<brand>" + p.getBrand() + "</brand>" + "\n\t\t\t"
+                        + "<name>" + p.getName() + "</name>" + "\n\t\t\t"
+                        + "<category>" + p.getCategory().getName() + "</category>" + "\n\t\t\t"
+                        + "<client>\n\t\t\t\t"
+                        + "<firstname>" + p.getClient().getFirstname() + "</firstname>\n\t\t\t\t"
+                        + "<lastname>" + p.getClient().getLastname() + "</lastname>\n\t\t\t"
+                        + "</client>" + "\n\t\t"
+                        + "</product>" + "\n\t";
+            }
         }
 
         String xml_end = "</products>\n" + "</code>" + "\n";

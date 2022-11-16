@@ -5,16 +5,22 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.client.client.utils.FileSearch;
 
 @Controller
 public class CreateQuestion implements IQuestion {
 
-    @GetMapping(value = { "/", "/index" })
+    @RequestMapping(value = { "/", "/index" })
     private String redirectUser() {
+        return "index";
+    }
+
+    @RequestMapping(value = "/hello")
+    private String hello() {
+        System.out.println("--------- REDIRECTION OK -------------");
         return "index";
     }
 

@@ -1,4 +1,4 @@
-package com.client.client.controller;
+package com.server.server.controller;
 
 import java.io.File;
 

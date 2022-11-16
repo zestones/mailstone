@@ -96,7 +96,6 @@ public class ReadQuestion implements IQuestion {
      * @param xmlFile
      */
     public void processQuestion(File xmlFile) {
-        System.out.println("=====> " + xmlFile);
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder;
@@ -128,7 +127,6 @@ public class ReadQuestion implements IQuestion {
      */
     public void readQuestion(String filename) {
         File file = null;
-        System.out.println("filename : " + filename);
 
         if (OSUtil.isWindows()) {
             String filePath = FOLDER_QUESTION + SEPARATOR + filename;
@@ -138,7 +136,6 @@ public class ReadQuestion implements IQuestion {
         } else
             file = new File(FOLDER_QUESTION + SEPARATOR + filename);
 
-        System.out.println("FILE-->" + file.toString());
         // Convert the Question into SQL
         processQuestion(file);
 
