@@ -60,8 +60,8 @@ public class Watcher {
                     if (!Files.probeContentType(child).equals("text/plain")) {
                         System.err.format("Just recieved a new response in the folder RESPONSE !\n", filename);
 
-                        new ReadResponse().readResponse(filename.toString());
                         Thread.sleep(1000);
+                        new ReadResponse().readResponse(filename.toString());
 
                         continue;
                     }

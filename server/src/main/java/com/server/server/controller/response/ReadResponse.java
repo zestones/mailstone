@@ -9,26 +9,15 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.springframework.stereotype.Controller;
 import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import com.server.server.utils.FileSearch;
 import com.server.server.utils.OSUtil;
+import com.server.server.utils.XMLReader;
 
 @Controller
 public class ReadResponse implements IResponse {
-    // private XMLReader xmlReader = new XMLReader();
-
-    /**
-     * Search the message code
-     * 
-     * @param doc
-     * @return "code"
-     */
-    private String getMessageCode(Document doc) {
-        NodeList nodeList = doc.getElementsByTagName("code");
-        return nodeList.item(0).getAttributes().getNamedItem("type").getNodeValue();
-    }
+    private XMLReader xmlReader = new XMLReader();
 
     /**
      * Read the xml file and convert it to SQL statement
@@ -37,29 +26,14 @@ public class ReadResponse implements IResponse {
      */
     private void convertResponseCodex001(Document doc) {
         // parse the xml file
-        // xmlReader.parseXML(doc.getDocumentElement());
+        xmlReader.parseXML(doc.getDocumentElement());
         System.out.println("JE PARSE !");
+
         // Save on corresponding Object
-        // xmlReader.parseXMLFromNode(doc, "client");
-        // System.out.println(xmlReader.getXmlNodeContent().toString());
+        xmlReader.parseXMLFromNode(doc, "code");
+
+        System.out.println(xmlReader.getXmlNodeContent().toString());
     }
-
-    // private void readFile(File f) {
-
-    // try {
-    // Scanner myReader = new Scanner(f);
-
-    // while (myReader.hasNextLine()) {
-    // String data = myReader.nextLine();
-    // System.out.println(data);
-    // }
-
-    // myReader.close();
-    // } catch (FileNotFoundException e) {
-    // System.out.println("An error occurred.");
-    // e.printStackTrace();
-    // }
-    // }
 
     /**
      * Process the response, search the code, and content
@@ -70,18 +44,16 @@ public class ReadResponse implements IResponse {
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder;
-        System.out.println("*******************");
 
         try {
             builder = factory.newDocumentBuilder();
             Document doc = builder.parse(xmlFile);
-            System.out.println("-----------------");
+
             // Retrieve data depending on the code of the message
-            // String code = xmlReader.getMessageCode(doc);
-            String code = getMessageCode(doc);
+            String code = xmlReader.getMessageCode(doc);
 
             // process response with code x001
-            if (code.equals("x001"))
+            if (code.equals(CODE_RESPONSE_PRODUCT))
                 convertResponseCodex001(doc);
 
         } catch (ParserConfigurationException e) {
