@@ -1,0 +1,8 @@
+2022-11-17 02:17:58 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Erreur lors de la conversion de données "'i' (PRODUCT: ""GATANTEE"" BOOLEAN NOT NULL)"
+Data conversion error converting "'i' (PRODUCT: ""GATANTEE"" BOOLEAN NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."PRODUCT"("ID","BRAND","DATE","GATANTEE","NAME","REF","ID_CATEGORY","ID_CLIENT")VALUES(?,?,?,?,?,?,?,?) [22018-214]
+2022-11-17 02:17:58 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Erreur lors de la conversion de données "'i' (PRODUCT: ""GATANTEE"" BOOLEAN NOT NULL)"
+Data conversion error converting "'i' (PRODUCT: ""GATANTEE"" BOOLEAN NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."PRODUCT"("ID","BRAND","DATE","GATANTEE","NAME","REF","ID_CATEGORY","ID_CLIENT")VALUES(?,?,?,?,?,?,?,?) [22018-214]

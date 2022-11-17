@@ -1,28 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE code SYSTEM "C:\Users\Administrateur\Documents\Master\Donnees structuree\PROJET\2app\communication\DTD\product.dtd">
-<code type="x001">
-	<products>
-		<product>
-			<ref>000</ref>
-			<date_issue>2022-11-16</date_issue>
-			<brand>lg</brand>
-			<name>laptop</name>
-			<category>info</category>
-			<client>
-				<firstname>i</firstname>
-				<lastname>i</lastname>
-			</client>
-		</product>
-		<product>
-			<ref>000</ref>
-			<date_issue>2022-11-16</date_issue>
-			<brand>thoshiba</brand>
-			<name>LAPTOP</name>
-			<category>info</category>
-			<client>
-				<firstname>i</firstname>
-				<lastname>i</lastname>
-			</client>
-		</product>
-	</products>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE code SYSTEM "C:\Users\Administrateur\Documents\Master\Donnees\PROJET\2app\communication\DTD\product.dtd">
+<code type="r001">
+    <products>
+        <product>
+            <ref>000</ref>
+            <date>2022-11-17</date>
+            <name>laptop</name>
+            <brand>lg</brand>
+            <category>info</category>
+            <client>
+                <firstname>i</firstname>
+                <lastname>i</lastname>
+                <email>i</email>
+                <address>i</address>
+                <phoneNumber>i</phoneNumber>
+            </client>
+        </product>
+        <product>
+            <ref>000</ref>
+            <date>2022-11-17</date>
+            <name>laptop</name>
+            <brand>toshiba</brand>
+            <category>info</category>
+            <client>
+                <firstname>i</firstname>
+                <lastname>i</lastname>
+                <email>i</email>
+                <address>i</address>
+                <phoneNumber>i</phoneNumber>
+            </client>
+        </product>
+    </products>
 </code>

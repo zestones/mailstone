@@ -2,4 +2,4 @@
 <!ATTLIST code type ID #REQUIRED>
 <!ELEMENT product (ref, date_issue)>
 <!ELEMENT ref (#PCDATA)>
-<!ELEMENT date_issue (#PCDATA)>
+<!ELEMENT date (#PCDATA)>

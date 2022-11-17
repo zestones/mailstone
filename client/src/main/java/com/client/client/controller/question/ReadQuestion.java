@@ -9,8 +9,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import com.client.client.controller.response.CreateResponse;
@@ -20,6 +18,7 @@ import com.client.client.service.product.ProductService;
 import com.client.client.utils.BeanUtil;
 import com.client.client.utils.FileSearch;
 import com.client.client.utils.OSUtil;
+import com.client.client.utils.XML.XMLReader;
 
 import lombok.NoArgsConstructor;
 
@@ -27,43 +26,7 @@ import lombok.NoArgsConstructor;
 public class ReadQuestion implements IQuestion {
 
     private ProductService service = BeanUtil.getBean(ProductService.class);
-
-    ArrayList<String> xmlNodeContent = new ArrayList<String>();
-
-    /**
-     * Search the message code
-     * 
-     * @param doc
-     * @return "code"
-     */
-    private String getMessageCode(Document doc) {
-        NodeList nodeList = doc.getElementsByTagName("code");
-        return nodeList.item(0).getAttributes().getNamedItem("type").getNodeValue();
-    }
-
-    /**
-     * Parse the xml file
-     * Save content in the xmlNodeContent Array
-     * 
-     * @param startingNode
-     */
-    private void parseXML(Node startingNode) {
-        NodeList childNodes = startingNode.getChildNodes();
-
-        for (int i = 0; i < childNodes.getLength(); i++) {
-            Node childNode = childNodes.item(i);
-
-            if (childNode.getNodeType() == Node.ELEMENT_NODE) {
-                parseXML(childNode);
-            } else {
-
-                // <trim> is used to ignore new lines and spaces elements.
-                if (!childNode.getTextContent().trim().isEmpty()) {
-                    xmlNodeContent.add(childNode.getTextContent());
-                }
-            }
-        }
-    }
+    private XMLReader xmlReader = new XMLReader();
 
     /**
      * Read the xml file and convert it to SQL statement
@@ -72,21 +35,20 @@ public class ReadQuestion implements IQuestion {
      */
     private void convertQuestionCodex001(Document doc) {
         // parse the xml file
-        parseXML(doc.getDocumentElement());
+        xmlReader.parseXML(doc.getDocumentElement());
 
         // extract the data
-        String ref = xmlNodeContent.get(0);
-        String date = xmlNodeContent.get(1);
+        String ref = xmlReader.getXmlNodeContent().get(0);
+        String date = xmlReader.getXmlNodeContent().get(1);
 
-        System.out.println(date);
-        System.out.println(ref);
+        System.out.println("ref : " + ref + "\ndate : " + date);
 
-        // Search on the DB
+        // Search in the DB
         ArrayList<Product> p = service.findProductByRefAndDate(ref, date);
         new CreateResponse().writeResponseCodex001(new File(IResponse.FOLDER_RESPONSE), p);
 
         // ! *** for dev ***
-        System.out.println("p :" + p.toString());
+        System.out.println("P :" + p.toString());
         // ! *******
     }
 
@@ -105,10 +67,10 @@ public class ReadQuestion implements IQuestion {
             Document doc = builder.parse(xmlFile);
 
             // Covert the message to SQL depending the code of the message
-            String code = getMessageCode(doc);
+            String code = xmlReader.getMessageCode(doc);
 
             // process question with code x001
-            if (code.equals("x001"))
+            if (code.equals(CODE_QUESTION_PRODUCT))
                 convertQuestionCodex001(doc);
 
         } catch (ParserConfigurationException e) {
@@ -128,6 +90,7 @@ public class ReadQuestion implements IQuestion {
     public void readQuestion(String filename) {
         File file = null;
 
+        // Choice of the Path OS
         if (OSUtil.isWindows()) {
             String filePath = FOLDER_QUESTION + SEPARATOR + filename;
 

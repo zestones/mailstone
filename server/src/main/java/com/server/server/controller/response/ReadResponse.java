@@ -9,15 +9,26 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.springframework.stereotype.Controller;
 import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import com.server.server.utils.FileSearch;
 import com.server.server.utils.OSUtil;
-import com.server.server.utils.XMLReader;
 
 @Controller
 public class ReadResponse implements IResponse {
-    private XMLReader xmlReader = new XMLReader();
+    // private XMLReader xmlReader = new XMLReader();
+
+    /**
+     * Search the message code
+     * 
+     * @param doc
+     * @return "code"
+     */
+    private String getMessageCode(Document doc) {
+        NodeList nodeList = doc.getElementsByTagName("code");
+        return nodeList.item(0).getAttributes().getNamedItem("type").getNodeValue();
+    }
 
     /**
      * Read the xml file and convert it to SQL statement
@@ -26,11 +37,11 @@ public class ReadResponse implements IResponse {
      */
     private void convertResponseCodex001(Document doc) {
         // parse the xml file
-        xmlReader.parseXML(doc.getDocumentElement());
-
+        // xmlReader.parseXML(doc.getDocumentElement());
+        System.out.println("JE PARSE !");
         // Save on corresponding Object
-        xmlReader.parseXMLFromNode(doc, "client");
-        System.out.println(xmlReader.getXmlNodeContent().toString());
+        // xmlReader.parseXMLFromNode(doc, "client");
+        // System.out.println(xmlReader.getXmlNodeContent().toString());
     }
 
     // private void readFile(File f) {
@@ -66,7 +77,8 @@ public class ReadResponse implements IResponse {
             Document doc = builder.parse(xmlFile);
             System.out.println("-----------------");
             // Retrieve data depending on the code of the message
-            String code = xmlReader.getMessageCode(doc);
+            // String code = xmlReader.getMessageCode(doc);
+            String code = getMessageCode(doc);
 
             // process response with code x001
             if (code.equals("x001"))
@@ -82,8 +94,9 @@ public class ReadResponse implements IResponse {
     }
 
     public void readResponse(String filename) {
-        File file = new File(FOLDER_RESPONSE + SEPARATOR + filename);
+        File file = null;
 
+        // Choice of the Path OS
         if (OSUtil.isWindows()) {
             String filePath = FOLDER_RESPONSE + SEPARATOR + filename;
 
