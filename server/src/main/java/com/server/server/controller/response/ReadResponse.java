@@ -87,5 +87,11 @@ public class ReadResponse implements IResponse {
 
         // Move the file inside the Archive folder
         file.renameTo(new File(FOLDER_ARCHIVED_RESPONSE + SEPARATOR + name));
+
+        try {
+            HttpURLConnectionExample.sendPOST();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -18,6 +18,12 @@ public class CreateQuestion implements IQuestion {
         return "index";
     }
 
+    @RequestMapping(value = "/hello")
+    private String hello() {
+        System.out.println("****************!!!!!");
+        return "index";
+    }
+
     /**
      * Write the question in xml inside a file
      * 
