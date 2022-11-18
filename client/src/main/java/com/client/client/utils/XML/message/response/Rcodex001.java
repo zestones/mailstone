@@ -31,17 +31,11 @@ public class Rcodex001 {
             writer.writeDTD("<!DOCTYPE code SYSTEM \"" + dtdPath + "\">");
 
             // <code>
-            writer.writeStartElement("code");
-            writer.writeAttribute("type", code);
-
-            // <products>
             writer.writeStartElement("products");
+            writer.writeAttribute("code", code);
 
             // fill the product list
             fillProductList(writer);
-
-            writer.writeEndElement();
-            // </products>
 
             writer.writeEndDocument();
             // </code>
@@ -81,9 +75,14 @@ public class Rcodex001 {
 
             // <category>
             writer.writeStartElement("category");
+
+            // <name>
+            writer.writeStartElement("name");
             writer.writeCharacters(p.getCategory().getName().toString());
             writer.writeEndElement();
 
+            writer.writeEndElement();
+            // </name>
             // <client>
             writer.writeStartElement("client");
 

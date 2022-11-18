@@ -41,15 +41,9 @@ public class ReadQuestion implements IQuestion {
         String ref = xmlReader.getXmlNodeContent().get(0);
         String date = xmlReader.getXmlNodeContent().get(1);
 
-        System.out.println("ref : " + ref + "\ndate : " + date);
-
         // Search in the DB
         ArrayList<Product> p = service.findProductByRefAndDate(ref, date);
         new CreateResponse().writeResponseCodex001(new File(IResponse.FOLDER_RESPONSE), p);
-
-        // ! *** for dev ***
-        System.out.println("P :" + p.toString());
-        // ! *******
     }
 
     /**

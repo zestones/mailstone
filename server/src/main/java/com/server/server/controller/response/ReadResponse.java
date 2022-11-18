@@ -6,11 +6,13 @@ import java.io.IOException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 
 import org.springframework.stereotype.Controller;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import com.server.server.controller.HttpRequest.HttpPostRequest;
 import com.server.server.utils.FileSearch;
 import com.server.server.utils.OSUtil;
 import com.server.server.utils.XMLReader;
@@ -18,22 +20,6 @@ import com.server.server.utils.XMLReader;
 @Controller
 public class ReadResponse implements IResponse {
     private XMLReader xmlReader = new XMLReader();
-
-    /**
-     * Read the xml file and convert it to SQL statement
-     * 
-     * @param doc
-     */
-    private void convertResponseCodex001(Document doc) {
-        // parse the xml file
-        xmlReader.parseXML(doc.getDocumentElement());
-        System.out.println("JE PARSE !");
-
-        // Save on corresponding Object
-        xmlReader.parseXMLFromNode(doc, "code");
-
-        System.out.println(xmlReader.getXmlNodeContent().toString());
-    }
 
     /**
      * Process the response, search the code, and content
@@ -49,18 +35,23 @@ public class ReadResponse implements IResponse {
             builder = factory.newDocumentBuilder();
             Document doc = builder.parse(xmlFile);
 
+            // convert the xml file into String
+            String xmlString = xmlReader.convertXMLtoString(doc);
+
             // Retrieve data depending on the code of the message
             String code = xmlReader.getMessageCode(doc);
 
             // process response with code x001
             if (code.equals(CODE_RESPONSE_PRODUCT))
-                convertResponseCodex001(doc);
+                new HttpPostRequest("product-list", xmlString);
 
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         } catch (SAXException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TransformerException e) {
             e.printStackTrace();
         }
     }
@@ -76,7 +67,6 @@ public class ReadResponse implements IResponse {
             file = new File(filePath);
         } else
             file = new File(FOLDER_RESPONSE + SEPARATOR + filename);
-        System.out.println("*/*/*/*/*/*/*/*/*/*/*/*//");
 
         // Convert the Response into Data Object
         processResponse(file);
@@ -87,11 +77,5 @@ public class ReadResponse implements IResponse {
 
         // Move the file inside the Archive folder
         file.renameTo(new File(FOLDER_ARCHIVED_RESPONSE + SEPARATOR + name));
-
-        try {
-            HttpURLConnectionExample.sendPOST();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

@@ -35,4 +35,16 @@ public class Product {
     private String name, ref, brand;
     private String date;
     private boolean gatantee;
+
+    public Product(Category category, Client client, String name, String ref, String brand, String date,
+            boolean guarantee) {
+        super();
+
+        this.category = category;
+        this.client = client;
+        this.name = name;
+        this.brand = brand;
+        this.date = date;
+        this.gatantee = guarantee;
+    }
 }

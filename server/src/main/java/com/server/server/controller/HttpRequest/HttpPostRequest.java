@@ -1,4 +1,4 @@
-package com.server.server.controller.response;
+package com.server.server.controller.HttpRequest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,25 +6,43 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
-public class HttpURLConnectionExample {
+public class HttpPostRequest {
 
     private static final String USER_AGENT = "Mozilla/5.0";
+    private String POST_URL = "http://localhost:8080/ok";
 
-    private static final String POST_URL = "http://localhost:8080/hello";
+    private String POST_PARAMS = "";
 
-    private static final String POST_PARAMS = "userName=Pankaj";
+    public HttpPostRequest(String url, String xmlString) {
+        POST_PARAMS = xmlString;
 
-    static void sendPOST() throws IOException {
+        // ! *** CHANGE POST URL
+        // POST_URL += url;
+        System.out.println("====" + POST_URL);
+        // ! ****
+
+        try {
+            sendPOST();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendPOST() throws IOException {
         URL obj = new URL(POST_URL);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestMethod("POST");
         con.setRequestProperty("User-Agent", USER_AGENT);
+        con.setRequestProperty("Content-Type", "Application/xml");
 
         // For POST only - START
+        con.setDoInput(true);
         con.setDoOutput(true);
+
         OutputStream os = con.getOutputStream();
-        os.write(POST_PARAMS.getBytes());
+        os.write(POST_PARAMS.getBytes(StandardCharsets.UTF_8));
         os.flush();
         os.close();
         // For POST only - END
@@ -44,7 +62,7 @@ public class HttpURLConnectionExample {
             in.close();
 
             // print result
-            System.out.println(response.toString());
+            // System.out.println(response.toString());
         } else {
             System.out.println("POST request not worked");
         }
