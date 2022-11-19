@@ -17,6 +17,7 @@ import javax.xml.transform.stream.StreamSource;
 
 import com.client.client.controller.IGloabal;
 import com.client.client.utils.XML.message.question.Qcodex001;
+import com.client.client.utils.XML.message.question.Qcodex002;
 
 public class XMLWriter implements IGloabal {
 
@@ -61,9 +62,14 @@ public class XMLWriter implements IGloabal {
     private void chooseTypeMessage(ByteArrayOutputStream out, String code) {
         switch (code) {
             // message question : lister les produits par ref et date issue
-            case CODE_QUESTION_PRODUCT:
+            case CODE_QUESTION_PRODUCT_1:
                 // write XML to ByteArrayOutputStream
                 Qcodex001.createXMLContent(out, code);
+                break;
+
+            case CODE_QUESTION_PRODUCT_2:
+                // write XML to ByteArrayOutputStream
+                Qcodex002.createXMLContent(out, code);
                 break;
         }
     }

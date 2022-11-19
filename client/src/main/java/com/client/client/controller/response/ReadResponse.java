@@ -35,7 +35,7 @@ public class ReadResponse implements IResponse {
     private ArrayList<Issue> list = new ArrayList<>();
 
     @GetMapping(value = "/products/rsp/ref-date")
-    private String getProducts(Model model)
+    private String getProductsDateRef(Model model)
             throws FileNotFoundException, JAXBException, ParserConfigurationException, SAXException {
 
         // Get the number of archived file
@@ -47,8 +47,27 @@ public class ReadResponse implements IResponse {
         model.addAttribute("nbResultats", list.size());
         model.addAttribute("products", list);
         model.addAttribute("wait", false);
+        model.addAttribute("qst", "ref-date");
 
-        return "product/response/ref-date";
+        return "product/response";
+    }
+
+    @GetMapping(value = "/products/rsp/ref-brand")
+    private String getProductsBrandRef(Model model)
+            throws FileNotFoundException, JAXBException, ParserConfigurationException, SAXException {
+
+        // Get the number of archived file
+        FileSearch fs = new FileSearch(new File(FOLDER_ARCHIVED_RESPONSE), 1);
+        int number = fs.getFileInDepth().size() - 1;
+        String name = "response" + number + ".xml";
+
+        convertResponseCodex001(FOLDER_ARCHIVED_RESPONSE + SEPARATOR + name);
+        model.addAttribute("nbResultats", list.size());
+        model.addAttribute("products", list);
+        model.addAttribute("wait", false);
+        model.addAttribute("qst", "ref-brand");
+
+        return "product/response";
     }
 
     private void convertResponseCodex001(String file)
@@ -69,8 +88,6 @@ public class ReadResponse implements IResponse {
         Issues p = (Issues) unmarshaller.unmarshal(source);
 
         list = p.getListIssue();
-
-        System.out.println("UNMARSHALL  ====== " + list.toString());
     }
 
     /**
@@ -89,9 +106,6 @@ public class ReadResponse implements IResponse {
 
             // Retrieve data depending on the code of the message
             String code = xmlReader.getMessageCode(doc);
-
-            System.out.println("CODE RESPONSE PRODUCT" + CODE_RESPONSE_PRODUCT);
-            System.out.println("File" + xmlFile.toString());
 
             // process response with code x001
             if (code.equals(CODE_RESPONSE_PRODUCT))

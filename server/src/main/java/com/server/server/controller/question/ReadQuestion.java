@@ -2,7 +2,6 @@ package com.server.server.controller.question;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -11,13 +10,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-import com.server.server.controller.response.CreateResponse;
-import com.server.server.controller.response.IResponse;
-import com.server.server.model.Issue;
-import com.server.server.model.Product;
-import com.server.server.service.issue.IssueService;
-import com.server.server.service.product.ProductService;
-import com.server.server.utils.BeanUtil;
 import com.server.server.utils.FileSearch;
 import com.server.server.utils.OSUtil;
 import com.server.server.utils.XML.XMLReader;
@@ -27,36 +19,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReadQuestion implements IQuestion {
 
-    private ProductService serviceProduct = BeanUtil.getBean(ProductService.class);
-    private IssueService serviceIssue = BeanUtil.getBean(IssueService.class);
-
     private XMLReader xmlReader = new XMLReader();
 
     /**
-     * Read the xml file and convert it to SQL statement
-     * 
-     * @param doc
-     */
-    private void convertQuestionCodex001(Document doc) {
-        // parse the xml file
-        xmlReader.parseXML(doc.getDocumentElement());
-
-        // extract the data
-        String ref = xmlReader.getXmlNodeContent().get(0);
-        String date = xmlReader.getXmlNodeContent().get(1);
-
-        // Search in the DB
-        ArrayList<Product> arrP = serviceProduct.findProductByRefAndDate(ref, date);
-        ArrayList<Issue> arrI = new ArrayList<>();
-
-        for (Product p : arrP)
-            arrI.add(serviceIssue.findIssueByProductId(p.getId()));
-
-        new CreateResponse().writeResponseCodex001(new File(IResponse.FOLDER_RESPONSE), arrI);
-    }
-
-    /**
      * Process the question, search the code, and content
+     * and convert the question to SQL
      * 
      * @param xmlFile
      */
@@ -72,9 +39,19 @@ public class ReadQuestion implements IQuestion {
             // Covert the message to SQL depending the code of the message
             String code = xmlReader.getMessageCode(doc);
             System.out.println("PROCESS QUESTION");
-            // process question with code x001
-            if (code.equals(CODE_QUESTION_PRODUCT))
-                convertQuestionCodex001(doc);
+
+            switch (code) {
+                // message question : lister les produits par ref et date issue
+                case CODE_QUESTION_PRODUCT_1:
+                    // convert question with code x001
+                    new ConvertQuestion().codex001(doc);
+                    break;
+
+                case CODE_QUESTION_PRODUCT_2:
+                    // convert question with code x002
+                    new ConvertQuestion().codex002(doc);
+                    break;
+            }
 
         } catch (ParserConfigurationException e) {
             e.printStackTrace();

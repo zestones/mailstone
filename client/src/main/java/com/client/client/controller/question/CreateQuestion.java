@@ -2,33 +2,12 @@ package com.client.client.controller.question;
 
 import java.io.File;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-
 import com.client.client.utils.FileSearch;
 import com.client.client.utils.XML.XMLWriter;
 import com.client.client.utils.XML.message.question.Qcodex001;
+import com.client.client.utils.XML.message.question.Qcodex002;
 
-@Controller
 public class CreateQuestion implements IQuestion {
-
-    @PostMapping(value = "/products/qst/ref-date")
-    private String getProducts(String ref, String date, Model model) {
-
-        if (new File(FOLDER_QUESTION).exists()) {
-            writeQuestionCodex001(new File(FOLDER_QUESTION), ref, date);
-        }
-
-        model.addAttribute("wait", true);
-        return "product/response/ref-date";
-    }
-
-    @GetMapping(value = "/product/qst/ref-date")
-    private String ProductRefDate() {
-        return "/product/question/ref-date";
-    }
 
     /**
      * Write the question in xml inside a file
@@ -37,7 +16,7 @@ public class CreateQuestion implements IQuestion {
      * @param ref
      * @param date
      */
-    void writeQuestionCodex001(File folder, String ref, String date) {
+    static void writeQuestionCodex001(File folder, String ref, String date) {
 
         // Get the files inside the folder
         FileSearch fs = new FileSearch(folder, 1);
@@ -49,6 +28,28 @@ public class CreateQuestion implements IQuestion {
 
         // Creation of the xml File
         Qcodex001.setData(date, ref, FOLDER_DTD + SEPARATOR + "product.dtd");
-        new XMLWriter().writeXML(FOLDER_QUESTION + SEPARATOR + filename, CODE_QUESTION_PRODUCT);
+        new XMLWriter().writeXML(FOLDER_QUESTION + SEPARATOR + filename, CODE_QUESTION_PRODUCT_1);
+    }
+
+    /**
+     * Write the question in xml inside a file
+     * 
+     * @param folder
+     * @param ref
+     * @param date
+     */
+    static void writeQuestionCodex002(File folder, String ref, String brand) {
+
+        // Get the files inside the folder
+        FileSearch fs = new FileSearch(folder, 1);
+        fs.printFilesInDepth();
+
+        // Get the number of files
+        int numberFiles = fs.getFileInDepth().size();
+        String filename = "question" + numberFiles + ".xml";
+
+        // Creation of the xml File
+        Qcodex002.setData(brand, ref, FOLDER_DTD + SEPARATOR + "product.dtd");
+        new XMLWriter().writeXML(FOLDER_QUESTION + SEPARATOR + filename, CODE_QUESTION_PRODUCT_2);
     }
 }

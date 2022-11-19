@@ -13,4 +13,8 @@ public interface IQuestion extends IGloabal {
                         + SEPARATOR + "communication"
                         + SEPARATOR + "archived"
                         + SEPARATOR + "question";
+
+        // x001 Message are for PRODUCT REF / DATE
+        String CODE_QUESTION_PRODUCT_1 = "q001";
+        String CODE_QUESTION_PRODUCT_2 = "q002";
 }

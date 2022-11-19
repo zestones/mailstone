@@ -43,7 +43,7 @@
         <a class="msg">
           <div class="message-product">Date de panne et référence</div>
         </a>
-        <a class="msg-search" data-th-href="@{/product/qst/ref-date}">
+        <a class="msg-search" data-th-href="@{/product/qst/{qst} (qst=${qst})}">
           <div class="icone-back">
             <span class="bi bi-arrow-90deg-left"></span>
           </div>
@@ -63,7 +63,7 @@
         </div>
         <form
           name="timer"
-          data-th-action="@{/products/rsp/ref-date}"
+          data-th-action="@{/products/rsp/{qst} (qst=${qst})}"
           method="GET"
         >
           <input id="hidden-submit" type="submit" />

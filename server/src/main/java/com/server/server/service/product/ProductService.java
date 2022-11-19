@@ -18,4 +18,9 @@ public class ProductService implements IProductService {
     public ArrayList<Product> findProductByRefAndDate(String ref, String date) {
         return pRepo.findProductByRefAndDate(ref, date);
     }
+
+    @Override
+    public ArrayList<Product> findProductByRefAndBrand(String ref, String brand) {
+        return pRepo.findProductByRefAndBrand(ref, brand);
+    }
 }

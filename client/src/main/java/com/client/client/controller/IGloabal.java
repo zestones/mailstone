@@ -3,20 +3,21 @@ package com.client.client.controller;
 import java.io.File;
 
 public interface IGloabal {
-    String SEPARATOR = File.separator;
+        String SEPARATOR = File.separator;
 
-    String PROJECT_PATH = new File("").getAbsolutePath();
+        String PROJECT_PATH = new File("").getAbsolutePath();
 
-    String FOLDER_DTD = PROJECT_PATH
-            + SEPARATOR + "communication"
-            + SEPARATOR + "DTD";
+        String FOLDER_DTD = PROJECT_PATH
+                        + SEPARATOR + "communication"
+                        + SEPARATOR + "DTD";
 
-    String FOLDER_RESPONSE = PROJECT_PATH
-            + SEPARATOR + "communication"
-            + SEPARATOR + "process"
-            + SEPARATOR + "response";
+        String FOLDER_RESPONSE = PROJECT_PATH
+                        + SEPARATOR + "communication"
+                        + SEPARATOR + "process"
+                        + SEPARATOR + "response";
 
-    // x001 Message are for PRODUCT REF / DATE
-    String CODE_QUESTION_PRODUCT = "q001";
-    String CODE_RESPONSE_PRODUCT = "r001";
+        // x001 Message are for PRODUCT REF / DATE
+        String CODE_QUESTION_PRODUCT_1 = "q001";
+        String CODE_QUESTION_PRODUCT_2 = "q002";
+        String CODE_RESPONSE_PRODUCT = "r001";
 }
