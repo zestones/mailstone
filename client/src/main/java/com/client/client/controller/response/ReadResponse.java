@@ -22,8 +22,8 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import com.client.client.model.Product;
-import com.client.client.model.Products;
+import com.client.client.model.Issue;
+import com.client.client.model.Issues;
 import com.client.client.utils.FileSearch;
 import com.client.client.utils.OSUtil;
 import com.client.client.utils.XML.XMLReader;
@@ -31,7 +31,8 @@ import com.client.client.utils.XML.XMLReader;
 @Controller
 public class ReadResponse implements IResponse {
     private XMLReader xmlReader = new XMLReader();
-    ArrayList<Product> list = new ArrayList<>();
+
+    private ArrayList<Issue> list = new ArrayList<>();
 
     @GetMapping(value = "/products/rsp/ref-date")
     private String getProducts(Model model)
@@ -43,7 +44,9 @@ public class ReadResponse implements IResponse {
         String name = "response" + number + ".xml";
 
         convertResponseCodex001(FOLDER_ARCHIVED_RESPONSE + SEPARATOR + name);
+        model.addAttribute("nbResultats", list.size());
         model.addAttribute("products", list);
+        model.addAttribute("wait", false);
 
         return "product/response/ref-date";
     }
@@ -51,8 +54,8 @@ public class ReadResponse implements IResponse {
     private void convertResponseCodex001(String file)
             throws JAXBException, ParserConfigurationException, SAXException, FileNotFoundException {
 
-        // ! ******* DISABLE DTD ********
-        JAXBContext jc = JAXBContext.newInstance(Products.class);
+        // ! ******* JAXB / SAX ********
+        JAXBContext jc = JAXBContext.newInstance(Issues.class);
         SAXParserFactory spf = SAXParserFactory.newInstance();
         spf.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
         spf.setFeature("http://xml.org/sax/features/validation", false);
@@ -60,15 +63,14 @@ public class ReadResponse implements IResponse {
         org.xml.sax.XMLReader xmlReader = spf.newSAXParser().getXMLReader();
         InputSource inputSource = new InputSource(new FileReader(file));
         SAXSource source = new SAXSource(xmlReader, inputSource);
-        // ! ******* DISABLE DTD ********
+        // ! ***************
 
         Unmarshaller unmarshaller = jc.createUnmarshaller();
-        Products p = (Products) unmarshaller.unmarshal(source);
+        Issues p = (Issues) unmarshaller.unmarshal(source);
 
-        System.out.println(p.toString());
-        list = p.getListProduct();
+        list = p.getListIssue();
 
-        System.out.println(list.toString());
+        System.out.println("UNMARSHALL  ====== " + list.toString());
     }
 
     /**

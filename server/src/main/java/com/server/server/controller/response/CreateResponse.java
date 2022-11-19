@@ -3,7 +3,7 @@ package com.server.server.controller.response;
 import java.io.File;
 import java.util.ArrayList;
 
-import com.server.server.model.Product;
+import com.server.server.model.Issue;
 import com.server.server.utils.FileSearch;
 import com.server.server.utils.XML.XMLWriter;
 import com.server.server.utils.XML.message.response.Rcodex001;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CreateResponse implements IResponse {
 
-    public void writeResponseCodex001(File folder, ArrayList<Product> res) {
+    public void writeResponseCodex001(File folder, ArrayList<Issue> res) {
         // Get the files inside the folder
         FileSearch fs = new FileSearch(folder, 1);
         fs.printFilesInDepth();

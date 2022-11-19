@@ -13,7 +13,9 @@
 
     <link rel="stylesheet" type="text/css" href="/css/home.css" />
     <link rel="stylesheet" type="text/css" href="/css/rsp.css" />
+
     <script type="text/javascript" src="/js/timer.js"></script>
+    <script type="text/javascript" src="/js/read-more.js"></script>
 
     <title>MailStone</title>
   </head>
@@ -37,7 +39,18 @@
     </div>
 
     <div class="content">
-      <div data-th-if="${#lists.isEmpty(products)}">
+      <div class="message-container">
+        <a class="msg">
+          <div class="message-product">Date de panne et référence</div>
+        </a>
+        <a class="msg-search" data-th-href="@{/product/qst/ref-date}">
+          <div class="icone-back">
+            <span class="bi bi-arrow-90deg-left"></span>
+          </div>
+        </a>
+      </div>
+
+      <div data-th-if="${wait == true}">
         <div class="lds-roller">
           <div></div>
           <div></div>
@@ -56,10 +69,47 @@
           <input id="hidden-submit" type="submit" />
         </form>
       </div>
+      <div data-th-if="${wait == false}">
+        <div class="results-container">
+          <h2>[[${nbResultats}]] Résultats</h2>
+          <div class="result" data-th-each="p,iter: ${products}">
+            <div class="result-header">
+              <div class="result-title">
+                [[${p.product.name}]] - [[${p.product.category.name}]] - [[
+                ${p.product.brand} ]]
+                <div class="date">[[ ${p.product.date} ]]</div>
+              </div>
+              <div class="ref">Ref : [[ ${p.product.ref} ]]</div>
+            </div>
+            <div class="result-content">
+              <div class="result-sub-title">Description de la panne :</div>
+              <p>[[ ${p.description} ]]</p>
+              <span
+                data-th-id="${'dots' + iter.index}"
+                style="display: inline"
+                data-th-if="${p.resolved == true}"
+              ></span
+              ><span
+                data-th-id="${'more' + iter.index}"
+                class="more"
+                style="display: none"
+              >
+                <div class="result-sub-title">Description de la solution :</div>
+                <p>[[ ${p.solution.description} ]]</p>
+              </span>
 
-      <ul data-th-each="p: ${products}">
-        <li data-th-text="${p.toString()}"></li>
-      </ul>
+              <button
+                class="detailsBtn"
+                data-th-value="${iter.index}"
+                onclick="displayMore(this.value)"
+                data-th-id="${'moreBtn' + iter.index}"
+              >
+                <i class="bi bi-chevron-double-down"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

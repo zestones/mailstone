@@ -7,15 +7,15 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
-import com.server.server.model.Product;
+import com.server.server.model.Issue;
 
 public class Rcodex001 {
     private static String dtdPath;
-    private static ArrayList<Product> arr = new ArrayList<Product>();
+    private static ArrayList<Issue> arr = new ArrayList<Issue>();
 
-    public static void setData(ArrayList<Product> p, String dtd) {
+    public static void setData(ArrayList<Issue> arrIssue, String dtd) {
         dtdPath = dtd;
-        arr = p;
+        arr = arrIssue;
     }
 
     public static void createXMLContent(OutputStream out, String code) {
@@ -31,7 +31,7 @@ public class Rcodex001 {
             writer.writeDTD("<!DOCTYPE code SYSTEM \"" + dtdPath + "\">");
 
             // <code>
-            writer.writeStartElement("products");
+            writer.writeStartElement("issues");
             writer.writeAttribute("code", code);
 
             // fill the product list
@@ -49,28 +49,31 @@ public class Rcodex001 {
     }
 
     private static void fillProductList(XMLStreamWriter writer) throws XMLStreamException {
-        for (Product p : arr) {
+        for (Issue i : arr) {
+            // <issue>
+            writer.writeStartElement("issue");
+
             // <product>
             writer.writeStartElement("product");
 
             // <ref>
             writer.writeStartElement("ref");
-            writer.writeCharacters(p.getRef().toString());
+            writer.writeCharacters(i.getProduct().getRef());
             writer.writeEndElement();
 
             // <date>
             writer.writeStartElement("date");
-            writer.writeCharacters(p.getDate().toString());
+            writer.writeCharacters(i.getProduct().getDate().toString());
             writer.writeEndElement();
 
             // <name>
             writer.writeStartElement("name");
-            writer.writeCharacters(p.getName().toString());
+            writer.writeCharacters(i.getProduct().getName().toString());
             writer.writeEndElement();
 
             // <brand>
             writer.writeStartElement("brand");
-            writer.writeCharacters(p.getBrand().toString());
+            writer.writeCharacters(i.getProduct().getBrand().toString());
             writer.writeEndElement();
 
             // <category>
@@ -78,37 +81,38 @@ public class Rcodex001 {
 
             // <name>
             writer.writeStartElement("name");
-            writer.writeCharacters(p.getCategory().getName().toString());
+            writer.writeCharacters(i.getProduct().getCategory().getName().toString());
             writer.writeEndElement();
 
             writer.writeEndElement();
-            // </name>
+            // </category>
+
             // <client>
             writer.writeStartElement("client");
 
             // <firstname>
             writer.writeStartElement("firstname");
-            writer.writeCharacters(p.getClient().getFirstname().toString());
+            writer.writeCharacters(i.getProduct().getClient().getFirstname().toString());
             writer.writeEndElement();
 
             // <lastname>
             writer.writeStartElement("lastname");
-            writer.writeCharacters(p.getClient().getLastname().toString());
+            writer.writeCharacters(i.getProduct().getClient().getLastname().toString());
             writer.writeEndElement();
 
             // <email>
             writer.writeStartElement("email");
-            writer.writeCharacters(p.getClient().getEmail().toString());
+            writer.writeCharacters(i.getProduct().getClient().getEmail().toString());
             writer.writeEndElement();
 
             // <address>
             writer.writeStartElement("address");
-            writer.writeCharacters(p.getClient().getAddress().toString());
+            writer.writeCharacters(i.getProduct().getClient().getAddress().toString());
             writer.writeEndElement();
 
             // <phoneNumber>
             writer.writeStartElement("phoneNumber");
-            writer.writeCharacters(p.getClient().getPhoneNumber().toString());
+            writer.writeCharacters(i.getProduct().getClient().getPhoneNumber().toString());
             writer.writeEndElement();
 
             writer.writeEndElement();
@@ -116,6 +120,40 @@ public class Rcodex001 {
 
             writer.writeEndElement();
             // </product>
+
+            // <description>
+            writer.writeStartElement("description");
+            writer.writeCharacters(i.getDescription().toString());
+            writer.writeEndElement();
+
+            // <resolved>
+            writer.writeStartElement("resolved");
+            writer.writeCharacters(Boolean.toString(i.isResolved()));
+            writer.writeEndElement();
+
+            // <solution>
+            writer.writeStartElement("solution");
+
+            // <description>
+            writer.writeStartElement("description");
+            writer.writeCharacters(i.getSolution().getDescription().toString());
+            writer.writeEndElement();
+
+            // <cost>
+            writer.writeStartElement("cost");
+            writer.writeCharacters(Long.toString(i.getSolution().getCost()));
+            writer.writeEndElement();
+
+            // <cost>
+            writer.writeStartElement("duration");
+            writer.writeCharacters(Long.toString(i.getSolution().getDuration()));
+            writer.writeEndElement();
+
+            writer.writeEndElement();
+            // </solution>
+
+            writer.writeEndElement();
+            // </issue>
         }
     }
 }

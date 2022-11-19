@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!DOCTYPE question SYSTEM "C:\Users\Administrateur\Documents\Master\Donnees\PROJET\2app\communication\DTD\product.dtd">
+<!DOCTYPE question SYSTEM "C:\Users\Administrateur\Desktop\save\2app\communication\DTD\product.dtd">
 <question code="q001">
     <product>
         <ref>000</ref>

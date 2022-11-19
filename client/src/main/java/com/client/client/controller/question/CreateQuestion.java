@@ -3,6 +3,7 @@ package com.client.client.controller.question;
 import java.io.File;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -14,11 +15,13 @@ import com.client.client.utils.XML.message.question.Qcodex001;
 public class CreateQuestion implements IQuestion {
 
     @PostMapping(value = "/products/qst/ref-date")
-    private String getProducts(String ref, String date) {
+    private String getProducts(String ref, String date, Model model) {
 
         if (new File(FOLDER_QUESTION).exists()) {
             writeQuestionCodex001(new File(FOLDER_QUESTION), ref, date);
         }
+
+        model.addAttribute("wait", true);
         return "product/response/ref-date";
     }
 

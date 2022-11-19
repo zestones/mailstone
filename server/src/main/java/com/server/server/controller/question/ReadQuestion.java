@@ -13,7 +13,9 @@ import org.xml.sax.SAXException;
 
 import com.server.server.controller.response.CreateResponse;
 import com.server.server.controller.response.IResponse;
+import com.server.server.model.Issue;
 import com.server.server.model.Product;
+import com.server.server.service.issue.IssueService;
 import com.server.server.service.product.ProductService;
 import com.server.server.utils.BeanUtil;
 import com.server.server.utils.FileSearch;
@@ -25,7 +27,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReadQuestion implements IQuestion {
 
-    private ProductService service = BeanUtil.getBean(ProductService.class);
+    private ProductService serviceProduct = BeanUtil.getBean(ProductService.class);
+    private IssueService serviceIssue = BeanUtil.getBean(IssueService.class);
+
     private XMLReader xmlReader = new XMLReader();
 
     /**
@@ -42,9 +46,13 @@ public class ReadQuestion implements IQuestion {
         String date = xmlReader.getXmlNodeContent().get(1);
 
         // Search in the DB
-        ArrayList<Product> p = service.findProductByRefAndDate(ref, date);
-        System.out.println("=====> " + p.toString());
-        new CreateResponse().writeResponseCodex001(new File(IResponse.FOLDER_RESPONSE), p);
+        ArrayList<Product> arrP = serviceProduct.findProductByRefAndDate(ref, date);
+        ArrayList<Issue> arrI = new ArrayList<>();
+
+        for (Product p : arrP)
+            arrI.add(serviceIssue.findIssueByProductId(p.getId()));
+
+        new CreateResponse().writeResponseCodex001(new File(IResponse.FOLDER_RESPONSE), arrI);
     }
 
     /**

@@ -1,6 +1,6 @@
 body {
     background-color: #F2F2F2;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif !important;
 
     margin: 0;
 }
@@ -17,7 +17,7 @@ h2 {
 .header {
     height: 75px;
     width: 100%;
-    background-color: #110056;
+    background-color: #003d5e;
     color: white;
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@ h2 {
 .left-nav-bar {
     height: 100vh;
     width: 18%;
-    background-color: #2B0056;
+    background-color: #003d5e;
     position: fixed;
     top: 0;
     left: 0;
@@ -60,7 +60,7 @@ a.tab {
 
 a.tab-active >.product-tab {
     margin-top: 55px;
-    background-color: #8B47CF;
+    background-color: #1c90ce;
     border: 2px solid white;
     text-align: center;
     display: flex;
@@ -71,13 +71,13 @@ a.tab-active >.product-tab {
 }
 
 a.tab > .product-tab:hover {
-    background-color: #8935dd;
+    background-color: #0870a8;
     font-size: 22px;
 }
 
 a.tab > .product-tab {
     margin-top: 55px;
-    background-color: #7C2FC8;
+    background-color: #005C8F;
     text-align: center;
     display: flex;
     flex-direction: column;

@@ -1,7 +1,6 @@
 package com.client.client.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -15,21 +14,17 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Products {
+public class Issues {
     private String code;
 
-    @XmlElement(name = "product")
-    private ArrayList<Product> listProduct = new ArrayList<Product>();
+    @XmlElement(name = "issue")
+    private ArrayList<Issue> listIssue = new ArrayList<Issue>();
 
-    public Products(String c, ArrayList<Product> arr) {
+    public Issues(String c, ArrayList<Issue> arr) {
         super();
 
         code = c;
-        listProduct = arr;
-    }
-
-    public List<Product> getProducts() {
-        return listProduct;
+        listIssue = arr;
     }
 
     public String getCode() {

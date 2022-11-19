@@ -1,12 +1,10 @@
 package com.server.server.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -22,15 +20,15 @@ public class Issue {
     @GeneratedValue
     private Long id;
 
-    @ManyToMany
+    @OneToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_product", referencedColumnName = "id")
-    private List<Product> product;
+    private Product product;
 
-    @ManyToMany
+    @OneToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_solution", referencedColumnName = "id")
-    private List<Solution> solution;
+    private Solution solution;
 
     private String description;
     private boolean resolved;
