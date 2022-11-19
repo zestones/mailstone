@@ -19,9 +19,9 @@ public class Products {
     private String code;
 
     @XmlElement(name = "product")
-    private List<Product> listProduct = new ArrayList<Product>();
+    private ArrayList<Product> listProduct = new ArrayList<Product>();
 
-    public Products(String c, List<Product> arr) {
+    public Products(String c, ArrayList<Product> arr) {
         super();
 
         code = c;

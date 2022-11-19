@@ -19,8 +19,7 @@ public class CreateQuestion implements IQuestion {
         if (new File(FOLDER_QUESTION).exists()) {
             writeQuestionCodex001(new File(FOLDER_QUESTION), ref, date);
         }
-
-        return "product/response/ref-date"; // TODO : Display search result
+        return "product/response/ref-date";
     }
 
     @GetMapping(value = "/product/qst/ref-date")

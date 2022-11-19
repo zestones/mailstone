@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -16,6 +16,8 @@ import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.sax.SAXSource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -29,6 +31,22 @@ import com.client.client.utils.XML.XMLReader;
 @Controller
 public class ReadResponse implements IResponse {
     private XMLReader xmlReader = new XMLReader();
+    ArrayList<Product> list = new ArrayList<>();
+
+    @GetMapping(value = "/products/rsp/ref-date")
+    private String getProducts(Model model)
+            throws FileNotFoundException, JAXBException, ParserConfigurationException, SAXException {
+
+        // Get the number of archived file
+        FileSearch fs = new FileSearch(new File(FOLDER_ARCHIVED_RESPONSE), 1);
+        int number = fs.getFileInDepth().size() - 1;
+        String name = "response" + number + ".xml";
+
+        convertResponseCodex001(FOLDER_ARCHIVED_RESPONSE + SEPARATOR + name);
+        model.addAttribute("products", list);
+
+        return "product/response/ref-date";
+    }
 
     private void convertResponseCodex001(String file)
             throws JAXBException, ParserConfigurationException, SAXException, FileNotFoundException {
@@ -48,7 +66,8 @@ public class ReadResponse implements IResponse {
         Products p = (Products) unmarshaller.unmarshal(source);
 
         System.out.println(p.toString());
-        List<Product> list = p.getListProduct();
+        list = p.getListProduct();
+
         System.out.println(list.toString());
     }
 

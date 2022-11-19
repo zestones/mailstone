@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" type="text/css" href="/css/home.css" />
     <link rel="stylesheet" type="text/css" href="/css/rsp.css" />
+    <script type="text/javascript" src="/js/timer.js"></script>
 
     <title>MailStone</title>
   </head>
@@ -34,7 +35,28 @@
         <a class="tab" href="#"><div class="product-tab">Solution</div> </a>
       </div>
     </div>
+
     <div class="content">
+      <div data-th-if="${#lists.isEmpty(products)}">
+        <div class="lds-roller">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <form
+          name="timer"
+          data-th-action="@{/products/rsp/ref-date}"
+          method="GET"
+        >
+          <input id="hidden-submit" type="submit" />
+        </form>
+      </div>
+
       <ul data-th-each="p: ${products}">
         <li data-th-text="${p.toString()}"></li>
       </ul>
