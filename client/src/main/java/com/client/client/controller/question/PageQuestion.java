@@ -19,6 +19,7 @@ public class PageQuestion implements IQuestion {
 
         model.addAttribute("wait", true);
         model.addAttribute("qst", "ref-date");
+        model.addAttribute("title", "Date de panne et référence");
 
         return "product/response";
     }
@@ -32,6 +33,7 @@ public class PageQuestion implements IQuestion {
 
         model.addAttribute("wait", true);
         model.addAttribute("qst", "ref-brand");
+        model.addAttribute("title", "Marque et référence");
 
         return "product/response";
     }

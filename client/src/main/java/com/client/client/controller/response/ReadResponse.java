@@ -15,9 +15,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.sax.SAXSource;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -28,16 +26,12 @@ import com.client.client.utils.FileSearch;
 import com.client.client.utils.OSUtil;
 import com.client.client.utils.XML.XMLReader;
 
-@Controller
 public class ReadResponse implements IResponse {
     private XMLReader xmlReader = new XMLReader();
-
     private ArrayList<Issue> list = new ArrayList<>();
 
-    @GetMapping(value = "/products/rsp/ref-date")
-    private String getProductsDateRef(Model model)
+    public void addViewAttribute(Model model)
             throws FileNotFoundException, JAXBException, ParserConfigurationException, SAXException {
-
         // Get the number of archived file
         FileSearch fs = new FileSearch(new File(FOLDER_ARCHIVED_RESPONSE), 1);
         int number = fs.getFileInDepth().size() - 1;
@@ -47,27 +41,6 @@ public class ReadResponse implements IResponse {
         model.addAttribute("nbResultats", list.size());
         model.addAttribute("products", list);
         model.addAttribute("wait", false);
-        model.addAttribute("qst", "ref-date");
-
-        return "product/response";
-    }
-
-    @GetMapping(value = "/products/rsp/ref-brand")
-    private String getProductsBrandRef(Model model)
-            throws FileNotFoundException, JAXBException, ParserConfigurationException, SAXException {
-
-        // Get the number of archived file
-        FileSearch fs = new FileSearch(new File(FOLDER_ARCHIVED_RESPONSE), 1);
-        int number = fs.getFileInDepth().size() - 1;
-        String name = "response" + number + ".xml";
-
-        convertResponseCodex001(FOLDER_ARCHIVED_RESPONSE + SEPARATOR + name);
-        model.addAttribute("nbResultats", list.size());
-        model.addAttribute("products", list);
-        model.addAttribute("wait", false);
-        model.addAttribute("qst", "ref-brand");
-
-        return "product/response";
     }
 
     private void convertResponseCodex001(String file)
