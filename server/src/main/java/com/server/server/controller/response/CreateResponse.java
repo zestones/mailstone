@@ -1,12 +1,12 @@
-package com.client.client.controller.response;
+package com.server.server.controller.response;
 
 import java.io.File;
 import java.util.ArrayList;
 
-import com.client.client.model.Product;
-import com.client.client.utils.FileSearch;
-import com.client.client.utils.XML.XMLWriter;
-import com.client.client.utils.XML.message.response.Rcodex001;
+import com.server.server.model.Product;
+import com.server.server.utils.FileSearch;
+import com.server.server.utils.XML.XMLWriter;
+import com.server.server.utils.XML.message.response.Rcodex001;
 
 import lombok.NoArgsConstructor;
 

@@ -1,4 +1,4 @@
-package com.client.client.utils;
+package com.server.server.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

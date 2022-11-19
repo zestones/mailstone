@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.client.client.controller.question.IQuestion;
+import com.client.client.controller.IGloabal;
 import com.client.client.utils.Watcher;
 
 @SpringBootApplication
@@ -17,8 +17,8 @@ public class ClientApplication {
 		SpringApplication.run(ClientApplication.class, args);
 
 		try {
-			System.out.println(new File(IQuestion.FOLDER_QUESTION).exists());
-			new Watcher(Paths.get(IQuestion.FOLDER_QUESTION)).processEvents();
+			System.out.println(new File(IGloabal.FOLDER_RESPONSE).exists());
+			new Watcher(Paths.get(IGloabal.FOLDER_RESPONSE)).processEvents();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

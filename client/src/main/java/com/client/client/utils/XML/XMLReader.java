@@ -14,14 +14,13 @@ public class XMLReader {
     private ArrayList<String> xmlNodeContent = new ArrayList<String>();
 
     /**
-     * Search the message code
+     * Get the message code
      * 
      * @param doc
      * @return "code"
      */
     public String getMessageCode(Document doc) {
-        NodeList nodeList = doc.getElementsByTagName("code");
-        return nodeList.item(0).getAttributes().getNamedItem("type").getNodeValue();
+        return doc.getDocumentElement().getAttribute("code");
     }
 
     /**

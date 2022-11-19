@@ -11,6 +11,11 @@ public interface IGloabal {
             + SEPARATOR + "communication"
             + SEPARATOR + "DTD";
 
+    String FOLDER_RESPONSE = PROJECT_PATH
+            + SEPARATOR + "communication"
+            + SEPARATOR + "process"
+            + SEPARATOR + "response";
+
     // x001 Message are for PRODUCT REF / DATE
     String CODE_QUESTION_PRODUCT = "q001";
     String CODE_RESPONSE_PRODUCT = "r001";

@@ -1,4 +1,4 @@
-package com.client.client.utils.XML.message.response;
+package com.server.server.utils.XML.message.response;
 
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
-import com.client.client.model.Product;
+import com.server.server.model.Product;
 
 public class Rcodex001 {
     private static String dtdPath;

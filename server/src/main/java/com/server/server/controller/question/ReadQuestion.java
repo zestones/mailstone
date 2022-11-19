@@ -1,4 +1,4 @@
-package com.client.client.controller.question;
+package com.server.server.controller.question;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,14 +11,14 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-import com.client.client.controller.response.CreateResponse;
-import com.client.client.controller.response.IResponse;
-import com.client.client.model.Product;
-import com.client.client.service.product.ProductService;
-import com.client.client.utils.BeanUtil;
-import com.client.client.utils.FileSearch;
-import com.client.client.utils.OSUtil;
-import com.client.client.utils.XML.XMLReader;
+import com.server.server.controller.response.CreateResponse;
+import com.server.server.controller.response.IResponse;
+import com.server.server.model.Product;
+import com.server.server.service.product.ProductService;
+import com.server.server.utils.BeanUtil;
+import com.server.server.utils.FileSearch;
+import com.server.server.utils.OSUtil;
+import com.server.server.utils.XML.XMLReader;
 
 import lombok.NoArgsConstructor;
 
@@ -43,6 +43,7 @@ public class ReadQuestion implements IQuestion {
 
         // Search in the DB
         ArrayList<Product> p = service.findProductByRefAndDate(ref, date);
+        System.out.println("=====> " + p.toString());
         new CreateResponse().writeResponseCodex001(new File(IResponse.FOLDER_RESPONSE), p);
     }
 
@@ -62,7 +63,7 @@ public class ReadQuestion implements IQuestion {
 
             // Covert the message to SQL depending the code of the message
             String code = xmlReader.getMessageCode(doc);
-
+            System.out.println("PROCESS QUESTION");
             // process question with code x001
             if (code.equals(CODE_QUESTION_PRODUCT))
                 convertQuestionCodex001(doc);

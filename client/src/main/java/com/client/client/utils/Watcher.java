@@ -11,7 +11,7 @@ import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 
-import com.client.client.controller.question.ReadQuestion;
+import com.client.client.controller.response.ReadResponse;
 
 @SuppressWarnings("unchecked")
 
@@ -58,10 +58,10 @@ public class Watcher {
                 try {
                     Path child = dir.resolve(filename);
                     if (!Files.probeContentType(child).equals("text/plain")) {
-                        System.err.format("Just recieved a new question in the folder QUESTION !\n", filename);
+                        System.err.format("Just recieved a new RESPONSE in the folder RESPONSE !\n", filename);
 
-                        new ReadQuestion().readQuestion(filename.toString());
                         Thread.sleep(1000);
+                        new ReadResponse().readResponse(filename.toString());
 
                         continue;
                     }

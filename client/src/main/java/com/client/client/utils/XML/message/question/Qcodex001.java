@@ -28,8 +28,8 @@ public class Qcodex001 {
             writer.writeDTD("<!DOCTYPE code SYSTEM \"" + dtdPath + "\">");
 
             // <code>
-            writer.writeStartElement("code");
-            writer.writeAttribute("type", code);
+            writer.writeStartElement("question");
+            writer.writeAttribute("code", code);
 
             // <product>
             writer.writeStartElement("product");

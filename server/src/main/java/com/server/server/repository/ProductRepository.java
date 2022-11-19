@@ -1,11 +1,11 @@
-package com.client.client.repository;
+package com.server.server.repository;
 
 import java.util.ArrayList;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.client.client.model.Product;
+import com.server.server.model.Product;
 
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Long> {

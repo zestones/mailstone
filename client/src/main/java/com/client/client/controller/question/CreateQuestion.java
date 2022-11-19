@@ -3,6 +3,7 @@ package com.client.client.controller.question;
 import java.io.File;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.client.client.utils.FileSearch;
@@ -19,7 +20,12 @@ public class CreateQuestion implements IQuestion {
             writeQuestionCodex001(new File(FOLDER_QUESTION), ref, date);
         }
 
-        return "redirect:/"; // TODO : Display search result
+        return "product/response/ref-date"; // TODO : Display search result
+    }
+
+    @GetMapping(value = "/product/qst/ref-date")
+    private String ProductRefDate() {
+        return "/product/question/ref-date";
     }
 
     /**

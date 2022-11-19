@@ -1,4 +1,4 @@
-package com.server.server.utils;
+package com.server.server.utils.XML;
 
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -53,6 +53,12 @@ public class XMLReader {
         }
     }
 
+    /**
+     * Start parsing the commument from a specific node
+     * 
+     * @param doc
+     * @param nodeName
+     */
     public void parseXMLFromNode(Document doc, String nodeName) {
         Node startingNode = doc.getElementsByTagName(nodeName).item(0);
         parseXML(startingNode);
@@ -61,7 +67,7 @@ public class XMLReader {
     /**
      * Get the xmlNodeContent Array
      * 
-     * @return"wmlNodeNodeContent"
+     * @return"xmlNodeNodeContent"
      */
 
     public ArrayList<String> getXmlNodeContent() {
