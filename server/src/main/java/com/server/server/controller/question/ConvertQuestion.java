@@ -3,6 +3,8 @@ package com.server.server.controller.question;
 import java.io.File;
 import java.util.ArrayList;
 
+import javax.xml.xpath.XPathExpressionException;
+
 import org.w3c.dom.Document;
 
 import com.server.server.controller.response.CreateResponse;
@@ -27,14 +29,16 @@ public class ConvertQuestion {
      * Convert XML question to SQL statement
      * 
      * @param doc
+     * @throws XPathExpressionException
      */
-    public void codex001(Document doc) {
+    public void codex001(Document doc) throws XPathExpressionException {
+
         // parse the xml file
         xmlReader.parseXML(doc.getDocumentElement());
 
         // extract the data
-        String ref = xmlReader.getXmlNodeContent().get(0);
-        String date = xmlReader.getXmlNodeContent().get(1);
+        String ref = xmlReader.getNodeXPath(doc, "/question/product/ref");
+        String date = xmlReader.getNodeXPath(doc, "/question/product/date");
 
         // Search in the DB
         ArrayList<Product> arrP = serviceProduct.findProductByRefAndDate(ref, date);

@@ -8,6 +8,10 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -28,6 +32,21 @@ public class XMLReader {
      */
     public String getMessageCode(Document doc) {
         return doc.getDocumentElement().getAttribute("code");
+    }
+
+    /**
+     * Access to XML Data with XPath expression
+     * 
+     * @param doc
+     * @param expression
+     * @throws XPathExpressionException
+     */
+    public String getNodeXPath(Document doc, String expression) throws XPathExpressionException {
+
+        XPath xPath = XPathFactory.newInstance().newXPath();
+        NodeList nodeList = (NodeList) xPath.compile(expression).evaluate(doc, XPathConstants.NODESET);
+
+        return nodeList.item(0).getTextContent();
     }
 
     /**
