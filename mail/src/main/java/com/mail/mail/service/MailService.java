@@ -1,4 +1,4 @@
-package com.mail.mail;
+package com.mail.mail.service;
 
 import java.util.Properties;
 
@@ -10,25 +10,13 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.mail.mail.model.Mail;
 
-@Controller
-public class PageController {
+public class MailService {
 
-    @GetMapping("/")
-    public String getIndex() {
+    private static final String SEPARATOR = "-+-+-+-";
 
-        System.out.println("Sending Email...");
-
-        sendEmail();
-
-        System.out.println("Done");
-
-        return "/index";
-    }
-
-    void sendEmail() {
+    public void send(Mail m) {
 
         // SENDER
         final String username = "idrissbenguezzou@gmail.com";
@@ -51,13 +39,12 @@ public class PageController {
         try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("localhost"));
-            message.setRecipients(
-                    Message.RecipientType.TO,
-                    InternetAddress.parse("mailstone2022@gmail.com, idrissbenguezzou@gmail.com"));
-            message.setSubject("Testing Gmail TLS");
-            message.setText("Bonjour à vous Monsieur Ghilas,"
-                    + "\n\n Je vous envoie ce mail depuis spring boot \n A l'heur ou je vous parle il est très tard et je vais dodo \n\n Bien cordialement, \nSpringBoot !!");
+            message.setFrom(new InternetAddress(m.getEmail()));
+
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("mailstone2022@gmail.com"));
+
+            message.setSubject("Plateforme en ligne");
+            message.setText(m.getUserInfos() + SEPARATOR + m.getProduct() + SEPARATOR + m.getIssue());
 
             Transport.send(message);
 

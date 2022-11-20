@@ -1,7 +1,3 @@
-#hidden-submit {
-    display: none;
-}
-
 .lds-roller {
   margin: 0 auto;
 
@@ -176,6 +172,10 @@ h2 {
 .result-sub-title {
   font-size: 18px;
   text-decoration: underline;
+}
+
+#hidden-submit {
+    display: none;
 }
 
 .detailsBtn {
