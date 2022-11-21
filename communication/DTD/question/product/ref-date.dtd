@@ -1,0 +1,5 @@
+<!ELEMENT question (product)>
+<!ATTLIST question code ID #REQUIRED>
+<!ELEMENT product (ref, date)>
+<!ELEMENT ref (#PCDATA)>
+<!ELEMENT date (#PCDATA)>

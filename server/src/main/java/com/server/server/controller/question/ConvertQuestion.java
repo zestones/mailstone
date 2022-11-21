@@ -90,7 +90,7 @@ public class ConvertQuestion {
         // extract the data
         String ref = xmlReader.getNodeXPath(doc, "/question/product/ref");
         String brand = xmlReader.getNodeXPath(doc, "/question/product/brand");
-        String email = xmlReader.getNodeXPath(doc, "/question/product/email");
+        String email = xmlReader.getNodeXPath(doc, "/question/product/client/email");
 
         // Search in the DB
 

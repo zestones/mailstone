@@ -45,10 +45,16 @@ public class Qcodex100 {
             writer.writeCharacters(brand.toString());
             writer.writeEndElement();
 
+            // <client>
+            writer.writeStartElement("client");
+
             // <mail>
             writer.writeStartElement("email");
             writer.writeCharacters(mail.toString());
             writer.writeEndElement();
+
+            writer.writeEndElement();
+            // </client>
 
             writer.writeEndElement();
             // </product>
