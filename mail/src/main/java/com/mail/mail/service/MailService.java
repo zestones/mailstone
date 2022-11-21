@@ -14,13 +14,13 @@ import com.mail.mail.model.Mail;
 
 public class MailService {
 
-    private static final String SEPARATOR = "-+-+-+-";
+    private static final String SEPARATOR = "##";
 
     public void send(Mail m) {
 
         // SENDER
-        final String username = "idrissbenguezzou@gmail.com";
-        final String password = "znjtzsrearitnnzw";
+        final String username = "mailstone2022@gmail.com";
+        final String password = "dtdxbgmdobizcyqf";
 
         Properties prop = new Properties();
 
@@ -44,7 +44,7 @@ public class MailService {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("mailstone2022@gmail.com"));
 
             message.setSubject("Plateforme en ligne");
-            message.setText(m.getUserInfos() + SEPARATOR + m.getProduct() + SEPARATOR + m.getIssue());
+            message.setText(m.getProduct() + SEPARATOR + m.getIssue());
 
             Transport.send(message);
 

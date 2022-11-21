@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE issue SYSTEM "C:\Users\Administrateur\Desktop\PROJECT MAILSTONE\2app\communication\DTD\product.dtd">
+<issue code="000">
+    <product>
+        <ref>651</ref>
+        <date>Mon Nov 21 03:23:40 CET 2022</date>
+        <name>ecran</name>
+        <brand>HP</brand>
+        <category>
+            <name/>
+        </category>
+        <client>
+            <firstname>Mail</firstname>
+            <lastname>Stone</lastname>
+            <email>&lt;mailstone2022@gmail.com&gt;</email>
+            <address/>
+            <phoneNumber/>
+        </client>
+    </product>
+    <description>  mon ordinateur ne s allume plus à cause  de mohamed rouabah  </description>
+    <resolved>false</resolved>
+    <solution>
+        <description/>
+        <cost/>
+        <duration/>
+    </solution>
+</issue>

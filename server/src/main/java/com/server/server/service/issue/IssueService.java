@@ -16,4 +16,9 @@ public class IssueService implements IIssueService {
     public Issue findIssueByProductId(Long id) {
         return iRepo.findIssueByProductId(id);
     }
+
+    @Override
+    public void save(Issue i) {
+        iRepo.save(i);
+    }
 }

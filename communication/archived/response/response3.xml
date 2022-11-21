@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE issues SYSTEM "C:\Users\Administrateur\Desktop\PROJECT MAILSTONE\2app\communication\DTD\product.dtd">
+<issues code="r001">
+    <issue>
+        <product>
+            <ref>000</ref>
+            <date>2022-11-17</date>
+            <name>Ordinateur</name>
+            <brand>lg</brand>
+            <category>
+                <name>informatique</name>
+            </category>
+            <client>
+                <firstname>idriss</firstname>
+                <lastname>Benguezzou</lastname>
+                <email>idriss@gmail.com</email>
+                <address>Saint-etienne</address>
+                <phoneNumber>54351313</phoneNumber>
+            </client>
+        </product>
+        <description>Mon PC est tombé du 3ieme etage réparer le moi svp.</description>
+        <resolved>true</resolved>
+        <solution>
+            <description>Remplacement de l'ordinateur.</description>
+            <cost>250</cost>
+            <duration>2</duration>
+        </solution>
+    </issue>
+    <issue>
+        <product>
+            <ref>000</ref>
+            <date>2022-11-17</date>
+            <name>Ecran</name>
+            <brand>toshiba</brand>
+            <category>
+                <name>bureautique</name>
+            </category>
+            <client>
+                <firstname>ghilas</firstname>
+                <lastname>Meziane</lastname>
+                <email>ghilas@gmail.com</email>
+                <address>Lyon</address>
+                <phoneNumber>4242425</phoneNumber>
+            </client>
+        </product>
+        <description>JKKKK JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ JJJJJJJJJJJJJJJJJ</description>
+        <resolved>true</resolved>
+        <solution>
+            <description>Remplacement de l'écran</description>
+            <cost>600</cost>
+            <duration>4</duration>
+        </solution>
+    </issue>
+</issues>

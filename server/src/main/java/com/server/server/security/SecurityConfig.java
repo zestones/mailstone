@@ -24,7 +24,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/h2-console/**")
+                .antMatchers("/", "/index", "/**", "/index/**", "/static/**", "/css/**", "/js/**", "/img/**",
+                        "/img/icon/**",
+                        "/h2-console/**")
                 .permitAll();
 
         // ! Allow access to the h2-console
