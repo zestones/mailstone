@@ -22,7 +22,6 @@ public class PageController {
         System.out.println(m.toString());
         System.out.println("Sending Email...");
 
-        m.setUserInfos(m.getFirstname(), m.getLastname(), m.getEmail());
         new MailService().send(m);
 
         System.out.println("Done");

@@ -39,7 +39,7 @@ public class MailService {
         try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(m.getEmail()));
+            message.setFrom(new InternetAddress("mailstone2022@gmail.com"));
 
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("mailstone2022@gmail.com"));
 
