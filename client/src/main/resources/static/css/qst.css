@@ -65,3 +65,18 @@ input.max-width {
 .mail {
     margin-top: 15px;
 }
+
+.textarea-container {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.desc-form {
+    width: 40%;
+}
+
+.textarea-desc {
+    width: 100%;
+    height: 150px;
+    max-width: 100%;
+}

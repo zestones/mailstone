@@ -23,7 +23,7 @@ public class CreateResponse implements IResponse {
         String filename = "response" + numberFiles + ".xml";
 
         // Creation of the xml File
-        Rcodex001.setData(res, FOLDER_DTD + SEPARATOR + "product.dtd");
+        Rcodex001.setData(res, FOLDER_DTD_RESPONSE + SEPARATOR + "response.dtd");
         new XMLWriter().writeXML(FOLDER_RESPONSE + SEPARATOR + filename, CODE_RESPONSE_PRODUCT);
     }
 }

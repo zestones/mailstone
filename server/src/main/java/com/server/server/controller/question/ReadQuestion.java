@@ -53,8 +53,15 @@ public class ReadQuestion implements IQuestion {
                     new ConvertQuestion().codex002(doc);
                     break;
 
+                case CODE_QUESTION_ISSUE_1:
+                    // convert question with code x100
+                    new ConvertQuestion().codex010(doc);
+                    break;
+
                 case CODE_QUESTION_CLIENT_1:
+                    // convert question with code x100
                     new ConvertQuestion().codex100(doc);
+                    break;
             }
 
         } catch (ParserConfigurationException e) {

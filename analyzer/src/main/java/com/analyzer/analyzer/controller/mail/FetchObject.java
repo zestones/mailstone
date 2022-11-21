@@ -189,7 +189,7 @@ public class FetchObject implements IGlobal {
 		String filename = "save" + numberFiles + ".xml";
 		String xmlFile = FOLDER_ARCHIVED_SAVE + SEPARATOR + filename;
 
-		Scodex000.setData(i, FOLDER_DTD + SEPARATOR + "product.dtd");
+		Scodex000.setData(i, FOLDER_DTD_SAVE + SEPARATOR + "save.dtd");
 		new XMLWriter().writeXML(FOLDER_ARCHIVED_SAVE + SEPARATOR + filename, CODE_SAVE_OBJECT);
 
 		try {

@@ -12,4 +12,6 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     ArrayList<Product> findProductByRefAndDate(String ref, String date);
 
     ArrayList<Product> findProductByRefAndBrand(String ref, String brand);
+
+    public ArrayList<Product> findAll();
 }

@@ -29,9 +29,6 @@ public class XMLWriter implements IGloabal {
         // pretty print by indention
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
-        // add standalone="yes", add line break before the root element
-        transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");
-
         StreamSource source = new StreamSource(new StringReader(xml));
         StringWriter output = new StringWriter();
         transformer.transform(source, new StreamResult(output));

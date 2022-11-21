@@ -18,6 +18,7 @@ import javax.xml.transform.stream.StreamSource;
 import com.client.client.controller.IGloabal;
 import com.client.client.utils.XML.message.question.Qcodex001;
 import com.client.client.utils.XML.message.question.Qcodex002;
+import com.client.client.utils.XML.message.question.Qcodex010;
 import com.client.client.utils.XML.message.question.Qcodex100;
 
 public class XMLWriter implements IGloabal {
@@ -30,9 +31,6 @@ public class XMLWriter implements IGloabal {
 
         // pretty print by indention
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-
-        // add standalone="yes", add line break before the root element
-        transformer.setOutputProperty(OutputKeys.STANDALONE, "yes");
 
         StreamSource source = new StreamSource(new StringReader(xml));
         StringWriter output = new StringWriter();
@@ -77,6 +75,12 @@ public class XMLWriter implements IGloabal {
             case CODE_QUESTION_CLIENT_1:
                 // write XML to ByteArrayOutputStream
                 Qcodex100.createXMLContent(out, code);
+                break;
+
+            // message client
+            case CODE_QUESTION_ISSUE_1:
+                // write XML to ByteArrayOutputStream
+                Qcodex010.createXMLContent(out, code);
                 break;
         }
     }

@@ -25,6 +25,11 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public ArrayList<Product> findAll() {
+        return pRepo.findAll();
+    }
+
+    @Override
     public ArrayList<Product> findProductByClientId(ArrayList<Product> arr, Long id) {
         ArrayList<Product> res = new ArrayList<>();
         for (Product p : arr) {

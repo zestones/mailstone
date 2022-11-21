@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!DOCTYPE question SYSTEM "C:\Users\Administrateur\Desktop\PROJECT MAILSTONE\2app\communication\DTD\product.dtd">
+<!DOCTYPE question SYSTEM "C:\Users\Administrateur\Desktop\PROJECT MAILSTONE\2app\communication\DTD\question\client\100.dtd">
 <question code="q100">
     <product>
-        <ref>1234</ref>
+        <ref>000</ref>
         <brand>lg</brand>
-        <email>mailstone2022@gmail.com</email>
+        <client>
+            <email>mailstone2022@gmail.com</email>
+        </client>
     </product>
 </question>
