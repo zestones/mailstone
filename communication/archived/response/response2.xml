@@ -3,27 +3,52 @@
 <issues code="r001">
     <issue>
         <product>
-            <ref>000</ref>
-            <date>2022-11-17</date>
-            <name>Ordinateur</name>
-            <brand>lg</brand>
+            <ref>1234</ref>
+            <date>21-11-2022</date>
+            <name>ordinateur</name>
+            <brand>toshiba</brand>
             <category>
-                <name>informatique</name>
+                <name/>
             </category>
             <client>
-                <firstname>idriss</firstname>
-                <lastname>Benguezzou</lastname>
-                <email>idriss@gmail.com</email>
-                <address>Saint-etienne</address>
-                <phoneNumber>54351313</phoneNumber>
+                <firstname>Mail</firstname>
+                <lastname>Stone</lastname>
+                <email>mailstone2022@gmail.com</email>
+                <address/>
+                <phoneNumber/>
             </client>
         </product>
-        <description>Mon PC est tombé du 3ieme etage réparer le moi svp.</description>
+        <description>  mon ordinateur ne s allume  plus à cause de mohamed rouabah  </description>
         <resolved>true</resolved>
         <solution>
-            <description>Remplacement de l'ordinateur.</description>
-            <cost>250</cost>
-            <duration>2</duration>
+            <description>Bonne question</description>
+            <cost>150</cost>
+            <duration>5</duration>
+        </solution>
+    </issue>
+    <issue>
+        <product>
+            <ref>1234</ref>
+            <date>21-11-2022</date>
+            <name>ordinateur</name>
+            <brand>toshiba</brand>
+            <category>
+                <name/>
+            </category>
+            <client>
+                <firstname>Mail</firstname>
+                <lastname>Stone</lastname>
+                <email>mailstone2022@gmail.com</email>
+                <address/>
+                <phoneNumber/>
+            </client>
+        </product>
+        <description>  mon ordinateur ne s allume  plus à cause de mohamed rouabah  </description>
+        <resolved>false</resolved>
+        <solution>
+            <description/>
+            <cost/>
+            <duration/>
         </solution>
     </issue>
 </issues>

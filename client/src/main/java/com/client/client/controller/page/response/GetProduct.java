@@ -1,4 +1,4 @@
-package com.client.client.controller.response;
+package com.client.client.controller.page.response;
 
 import java.io.FileNotFoundException;
 
@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.xml.sax.SAXException;
 
+import com.client.client.controller.response.ReadResponse;
+
 @Controller
-public class PageResponse {
+public class GetProduct {
 
     @GetMapping(value = "/products/rsp/ref-date")
     private String getProductsDateRef(Model model)

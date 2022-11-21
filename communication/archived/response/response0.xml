@@ -3,52 +3,27 @@
 <issues code="r001">
     <issue>
         <product>
-            <ref>000</ref>
-            <date>2022-11-17</date>
-            <name>Ordinateur</name>
-            <brand>LG</brand>
+            <ref>1234</ref>
+            <date>21-11-2022</date>
+            <name>ecran</name>
+            <brand>lg</brand>
             <category>
-                <name>informatique</name>
+                <name/>
             </category>
             <client>
-                <firstname>idriss</firstname>
-                <lastname>Benguezzou</lastname>
-                <email>idriss@gmail.com</email>
-                <address>Saint-etienne</address>
-                <phoneNumber>54351313</phoneNumber>
+                <firstname>Mail</firstname>
+                <lastname>Stone</lastname>
+                <email>mailstone2022@gmail.com</email>
+                <address/>
+                <phoneNumber/>
             </client>
         </product>
-        <description>Mon PC est tombé du 3ieme etage réparer le moi svp.</description>
-        <resolved>true</resolved>
+        <description>  mon ordinateur ne s allume plus à  cause de mohamed rouabah  </description>
+        <resolved>false</resolved>
         <solution>
-            <description>Remplacement de l'ordinateur.</description>
-            <cost>250</cost>
-            <duration>2</duration>
-        </solution>
-    </issue>
-    <issue>
-        <product>
-            <ref>000</ref>
-            <date>2022-11-17</date>
-            <name>Ecran</name>
-            <brand>TOSHIBA</brand>
-            <category>
-                <name>bureautique</name>
-            </category>
-            <client>
-                <firstname>ghilas</firstname>
-                <lastname>Meziane</lastname>
-                <email>ghilas@gmail.com</email>
-                <address>Lyon</address>
-                <phoneNumber>4242425</phoneNumber>
-            </client>
-        </product>
-        <description>JKKKK JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ JJJJJJJJJJJJJJJJJ</description>
-        <resolved>true</resolved>
-        <solution>
-            <description>Remplacement de l'écran</description>
-            <cost>600</cost>
-            <duration>4</duration>
+            <description/>
+            <cost/>
+            <duration/>
         </solution>
     </issue>
 </issues>

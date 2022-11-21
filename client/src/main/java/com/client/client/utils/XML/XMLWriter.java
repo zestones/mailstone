@@ -18,6 +18,7 @@ import javax.xml.transform.stream.StreamSource;
 import com.client.client.controller.IGloabal;
 import com.client.client.utils.XML.message.question.Qcodex001;
 import com.client.client.utils.XML.message.question.Qcodex002;
+import com.client.client.utils.XML.message.question.Qcodex100;
 
 public class XMLWriter implements IGloabal {
 
@@ -70,6 +71,12 @@ public class XMLWriter implements IGloabal {
             case CODE_QUESTION_PRODUCT_2:
                 // write XML to ByteArrayOutputStream
                 Qcodex002.createXMLContent(out, code);
+                break;
+
+            // message client
+            case CODE_QUESTION_CLIENT_1:
+                // write XML to ByteArrayOutputStream
+                Qcodex100.createXMLContent(out, code);
                 break;
         }
     }

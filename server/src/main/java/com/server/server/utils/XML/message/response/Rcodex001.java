@@ -58,22 +58,22 @@ public class Rcodex001 {
 
             // <ref>
             writer.writeStartElement("ref");
-            writer.writeCharacters(i.getProduct().getRef());
+            writer.writeCharacters(toString(i.getProduct().getRef()));
             writer.writeEndElement();
 
             // <date>
             writer.writeStartElement("date");
-            writer.writeCharacters(i.getProduct().getDate().toString());
+            writer.writeCharacters(toString(i.getProduct().getDate()));
             writer.writeEndElement();
 
             // <name>
             writer.writeStartElement("name");
-            writer.writeCharacters(i.getProduct().getName().toString());
+            writer.writeCharacters(toString(i.getProduct().getName()));
             writer.writeEndElement();
 
             // <brand>
             writer.writeStartElement("brand");
-            writer.writeCharacters(i.getProduct().getBrand().toString());
+            writer.writeCharacters(toString(i.getProduct().getBrand()));
             writer.writeEndElement();
 
             // <category>
@@ -81,7 +81,7 @@ public class Rcodex001 {
 
             // <name>
             writer.writeStartElement("name");
-            writer.writeCharacters(i.getProduct().getCategory().getName().toString());
+            writer.writeCharacters(toString(i.getProduct().getCategory().getName()));
             writer.writeEndElement();
 
             writer.writeEndElement();
@@ -92,27 +92,27 @@ public class Rcodex001 {
 
             // <firstname>
             writer.writeStartElement("firstname");
-            writer.writeCharacters(i.getProduct().getClient().getFirstname().toString());
+            writer.writeCharacters(toString(i.getProduct().getClient().getFirstname()));
             writer.writeEndElement();
 
             // <lastname>
             writer.writeStartElement("lastname");
-            writer.writeCharacters(i.getProduct().getClient().getLastname().toString());
+            writer.writeCharacters(toString(i.getProduct().getClient().getLastname()));
             writer.writeEndElement();
 
             // <email>
             writer.writeStartElement("email");
-            writer.writeCharacters(i.getProduct().getClient().getEmail().toString());
+            writer.writeCharacters(toString(i.getProduct().getClient().getEmail()));
             writer.writeEndElement();
 
             // <address>
             writer.writeStartElement("address");
-            writer.writeCharacters(i.getProduct().getClient().getAddress().toString());
+            writer.writeCharacters(toString(i.getProduct().getClient().getAddress()));
             writer.writeEndElement();
 
             // <phoneNumber>
             writer.writeStartElement("phoneNumber");
-            writer.writeCharacters(i.getProduct().getClient().getPhoneNumber().toString());
+            writer.writeCharacters(toString(i.getProduct().getClient().getPhoneNumber()));
             writer.writeEndElement();
 
             writer.writeEndElement();
@@ -123,7 +123,7 @@ public class Rcodex001 {
 
             // <description>
             writer.writeStartElement("description");
-            writer.writeCharacters(i.getDescription().toString());
+            writer.writeCharacters(toString(i.getDescription()));
             writer.writeEndElement();
 
             // <resolved>
@@ -136,17 +136,17 @@ public class Rcodex001 {
 
             // <description>
             writer.writeStartElement("description");
-            writer.writeCharacters(i.getSolution().getDescription().toString());
+            writer.writeCharacters(toString(i.getSolution().getDescription()));
             writer.writeEndElement();
 
             // <cost>
             writer.writeStartElement("cost");
-            writer.writeCharacters(Long.toString(i.getSolution().getCost()));
+            writer.writeCharacters(LongtoString(i.getSolution().getCost()));
             writer.writeEndElement();
 
             // <cost>
             writer.writeStartElement("duration");
-            writer.writeCharacters(Long.toString(i.getSolution().getDuration()));
+            writer.writeCharacters(LongtoString(i.getSolution().getDuration()));
             writer.writeEndElement();
 
             writer.writeEndElement();
@@ -155,5 +155,19 @@ public class Rcodex001 {
             writer.writeEndElement();
             // </issue>
         }
+    }
+
+    private static String toString(Object o) {
+        if (o == null)
+            return "";
+
+        return o.toString();
+    }
+
+    private static String LongtoString(Long i) {
+        if (i == null)
+            return "";
+
+        return Long.toString(i);
     }
 }

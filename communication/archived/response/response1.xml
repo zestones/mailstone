@@ -1,3 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!DOCTYPE issues SYSTEM "C:\Users\Administrateur\Desktop\PROJECT MAILSTONE\2app\communication\DTD\product.dtd">
-<issues code="r001"/>
+<issues code="r001">
+    <issue>
+        <product>
+            <ref>1234</ref>
+            <date>21-11-2022</date>
+            <name>ecran</name>
+            <brand>lg</brand>
+            <category>
+                <name/>
+            </category>
+            <client>
+                <firstname>Mail</firstname>
+                <lastname>Stone</lastname>
+                <email>mailstone2022@gmail.com</email>
+                <address/>
+                <phoneNumber/>
+            </client>
+        </product>
+        <description>  mon ordinateur ne s allume plus à  cause de mohamed rouabah  </description>
+        <resolved>false</resolved>
+        <solution>
+            <description/>
+            <cost/>
+            <duration/>
+        </solution>
+    </issue>
+</issues>

@@ -12,7 +12,6 @@
     />
 
     <link rel="stylesheet" type="text/css" href="/css/home.css" />
-    <link rel="stylesheet" type="text/css" href="/css/qst.css" />
 
     <title>MailStone</title>
   </head>
@@ -20,14 +19,15 @@
     <div class="header">
       <h1>MailStone</h1>
     </div>
+    <!-- NAV BAR -->
     <div class="left-nav-bar">
       <h2>Home</h2>
       <div class="container-tabs">
-        <a class="tab-active" data-th-href="@{/home}"
+        <a class="tab" data-th-href="@{/home}"
           ><div class="product-tab">Produits</div>
         </a>
 
-        <a class="tab" data-th-href="@{/client}"
+        <a class="tab-active" href="#"
           ><div class="product-tab">Client</div>
         </a>
 
@@ -39,38 +39,16 @@
       </div>
     </div>
     <div class="content">
+      <!-- Client & product_brand & product_ref -->
       <div class="message-container">
-        <a class="msg">
-          <div class="message-product">Marque et référence</div>
-        </a>
-        <a class="msg-search" data-th-href="@{/home}">
-          <div class="icone-back">
-            <span class="bi bi-arrow-90deg-left"></span>
+        <a class="msg" data-th-href="@{/client/qst/mail-brand-ref}">
+          <div class="message-product">
+            Email client, marque et référence produit
           </div>
         </a>
-      </div>
-
-      <div class="form-container">
-        <form
-          id="search"
-          data-th-action="@{/products/qst/ref-brand}"
-          method="POST"
-        >
-          <div class="input-label">
-            <label for="ref">Référence</label>
-            <input type="text" name="ref" required autofocus />
-          </div>
-
-          <div class="input-label">
-            <label for="brand">Marque du produit</label>
-            <input type="text" name="brand" required />
-          </div>
-        </form>
-      </div>
-      <div class="submit">
-        <button class="submit-btn" form="search" type="submit">
-          Rechercher
-        </button>
+        <a class="msg-search" data-th-href="@{/client/qst/mail-brand-ref}">
+          <div class="icone-search"><i class="bi bi-search"></i></div>
+        </a>
       </div>
     </div>
   </body>

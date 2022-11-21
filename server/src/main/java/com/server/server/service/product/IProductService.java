@@ -11,4 +11,6 @@ public interface IProductService {
     ArrayList<Product> findProductByRefAndDate(String ref, String date);
 
     ArrayList<Product> findProductByRefAndBrand(String ref, String brand);
+
+    ArrayList<Product> findProductByClientId(ArrayList<Product> arr, Long id);
 }

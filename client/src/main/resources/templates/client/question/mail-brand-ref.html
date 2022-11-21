@@ -20,14 +20,15 @@
     <div class="header">
       <h1>MailStone</h1>
     </div>
+    <!-- NAV BAR -->
     <div class="left-nav-bar">
       <h2>Home</h2>
       <div class="container-tabs">
-        <a class="tab-active" data-th-href="@{/home}"
+        <a class="tab" data-th-href="@{/home}"
           ><div class="product-tab">Produits</div>
         </a>
 
-        <a class="tab" data-th-href="@{/client}"
+        <a class="tab-active" href="#"
           ><div class="product-tab">Client</div>
         </a>
 
@@ -38,12 +39,16 @@
         <a class="tab" href="#"><div class="product-tab">Solution</div> </a>
       </div>
     </div>
+
+    <!-- Content of the page -->
     <div class="content">
       <div class="message-container">
         <a class="msg">
-          <div class="message-product">Marque et référence</div>
+          <div class="message-product">
+            Email client, marque et référence produit
+          </div>
         </a>
-        <a class="msg-search" data-th-href="@{/home}">
+        <a class="msg-search" data-th-href="@{/client}">
           <div class="icone-back">
             <span class="bi bi-arrow-90deg-left"></span>
           </div>
@@ -53,17 +58,22 @@
       <div class="form-container">
         <form
           id="search"
-          data-th-action="@{/products/qst/ref-brand}"
+          data-th-action="@{/clients/qst/mail-brand-ref}"
           method="POST"
         >
           <div class="input-label">
-            <label for="ref">Référence</label>
+            <label for="ref">Référence du produit</label>
             <input type="text" name="ref" required autofocus />
           </div>
 
           <div class="input-label">
             <label for="brand">Marque du produit</label>
             <input type="text" name="brand" required />
+          </div>
+
+          <div class="mail">
+            <label for="mail">Email du client</label>
+            <input class="max-width" type="email" name="mail" required />
           </div>
         </form>
       </div>

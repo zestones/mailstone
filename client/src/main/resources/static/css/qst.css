@@ -58,3 +58,10 @@ input, label {
     background-color: rgb(119, 40, 199);
     cursor: pointer;
 }
+
+input.max-width {
+    width: 100% !important;
+}
+.mail {
+    margin-top: 15px;
+}

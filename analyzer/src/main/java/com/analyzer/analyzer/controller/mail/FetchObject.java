@@ -2,6 +2,7 @@ package com.analyzer.analyzer.controller.mail;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -55,7 +56,10 @@ public class FetchObject implements IGlobal {
 					client.setLastname(infosClient[i]);
 					break;
 				case 2:
-					client.setEmail(infosClient[i]);
+					String mail = infosClient[i];
+					mail = mail.replace("<", "");
+					mail = mail.replace(">", "");
+					client.setEmail(mail);
 					break;
 
 				default:
@@ -131,21 +135,20 @@ public class FetchObject implements IGlobal {
 		p.setInfos();
 
 		for (int i = 0; i < contenu.size(); i++) {
-			System.out.println("->" + contenu.get(i) + "<-");
 
 			double score = StringSimilarity.similarity(contenu.get(i), "produit");
 			if (score > 0.35) {
-				p.setName(contenu.get(i + 1));
+				p.setName(contenu.get(i + 1).toLowerCase());
 			}
 
 			score = StringSimilarity.similarity(contenu.get(i), "référence");
 			if (score > 0.35) {
-				p.setReference(contenu.get(i + 1));
+				p.setReference(contenu.get(i + 1).toLowerCase());
 			}
 
 			score = StringSimilarity.similarity(contenu.get(i), "marque");
 			if (score > 0.35) {
-				p.setBrand(contenu.get(i + 1));
+				p.setBrand(contenu.get(i + 1).toLowerCase());
 			}
 
 			score = StringSimilarity.similarity(contenu.get(i), "garanti");
@@ -234,7 +237,9 @@ public class FetchObject implements IGlobal {
 		Product p = new Product();
 		p.setInfos();
 		p = fetchProduct(contenu[0]);
-		p.setDate(date.toString());
+
+		SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
+		p.setDate(formater.format(date).toString());
 
 		Client c = new Client();
 		c.setInfos();
@@ -245,7 +250,5 @@ public class FetchObject implements IGlobal {
 		i.setProduct(p);
 
 		writeSaveCodex000(i);
-
-		// iRepo.save(i);
 	}
 }

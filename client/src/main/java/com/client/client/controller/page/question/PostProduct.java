@@ -1,20 +1,29 @@
-package com.client.client.controller.question;
+package com.client.client.controller.page.question;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.client.client.controller.question.CreateQuestion;
+import com.client.client.controller.question.IQuestion;
+
 @Controller
-public class PageQuestion implements IQuestion {
+public class PostProduct implements IQuestion {
 
     @PostMapping(value = "/products/qst/ref-date")
-    private String getProductsRefDate(String ref, String date, Model model) {
+    private String getProductsRefDate(String ref, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date,
+            Model model) {
+        SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
 
+        System.out.println(formater.format(date).toString());
         if (new File(FOLDER_QUESTION).exists()) {
-            CreateQuestion.writeQuestionCodex001(new File(FOLDER_QUESTION), ref, date);
+            CreateQuestion.writeQuestionCodex001(new File(FOLDER_QUESTION), ref, formater.format(date).toString());
         }
 
         model.addAttribute("wait", true);

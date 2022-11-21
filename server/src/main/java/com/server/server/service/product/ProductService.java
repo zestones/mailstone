@@ -23,4 +23,15 @@ public class ProductService implements IProductService {
     public ArrayList<Product> findProductByRefAndBrand(String ref, String brand) {
         return pRepo.findProductByRefAndBrand(ref, brand);
     }
+
+    @Override
+    public ArrayList<Product> findProductByClientId(ArrayList<Product> arr, Long id) {
+        ArrayList<Product> res = new ArrayList<>();
+        for (Product p : arr) {
+            if (p.getClient().getId().equals(id))
+                res.add(p);
+        }
+
+        return res;
+    }
 }

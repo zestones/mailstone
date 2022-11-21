@@ -22,7 +22,7 @@
     <div class="left-nav-bar">
       <h2>Home</h2>
       <div class="container-tabs">
-        <a class="tab-active" href="#"
+        <a class="tab" data-th-href="@{/home}"
           ><div class="product-tab">Produits</div>
         </a>
 
@@ -30,26 +30,36 @@
           ><div class="product-tab">Client</div>
         </a>
 
-        <a class="tab" data-th-href="@{/issue}"
-          ><div class="product-tab">Panne</div>
-        </a>
+        <a class="tab-active" href="#"><div class="product-tab">Panne</div> </a>
 
         <a class="tab" href="#"><div class="product-tab">Solution</div> </a>
       </div>
     </div>
     <div class="content">
+      <!-- Description & ref -->
       <div class="message-container">
         <a class="msg" data-th-href="@{/product/qst/ref-date}">
-          <div class="message-product">Date de panne et référence</div>
+          <div class="message-product">Description et référence</div>
         </a>
         <a class="msg-search" data-th-href="@{/product/qst/ref-date}">
           <div class="icone-search"><i class="bi bi-search"></i></div>
         </a>
       </div>
 
+      <!-- Description & brand & ref  -->
       <div class="message-container">
         <a class="msg" data-th-href="@{/product/qst/ref-brand}">
-          <div class="message-product">Marque et référence</div>
+          <div class="message-product">Déscription marque et référence</div>
+        </a>
+        <a class="msg-search" data-th-href="@{/product/qst/ref-brand}">
+          <div class="icone-search"><i class="bi bi-search"></i></div>
+        </a>
+      </div>
+
+      <!-- Description & client -->
+      <div class="message-container">
+        <a class="msg" data-th-href="@{/product/qst/ref-brand}">
+          <div class="message-product">Déscription et client</div>
         </a>
         <a class="msg-search" data-th-href="@{/product/qst/ref-brand}">
           <div class="icone-search"><i class="bi bi-search"></i></div>

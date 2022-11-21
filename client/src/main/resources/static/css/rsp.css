@@ -163,7 +163,6 @@ h2 {
 }
 
 .result-header > .result-title > .date {
-  display: inline-block;
   float: right;
   font-size: 20px;
   color: white;
@@ -199,3 +198,15 @@ h2 {
   cursor: pointer;
 }
 
+.user-details {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-details-left {
+  margin-left: 5px;
+}
+
+.user-details-right {
+  margin-left: 50%;
+}
