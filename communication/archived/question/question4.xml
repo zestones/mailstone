@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE question SYSTEM "C:\Users\Administrateur\Desktop\PROJECT MAILSTONE\2app\communication\DTD\question\product\001.dtd">
-<question code="q001">
-    <product>
-        <ref>000</ref>
-        <date>21-11-2022</date>
-    </product>
-</question>

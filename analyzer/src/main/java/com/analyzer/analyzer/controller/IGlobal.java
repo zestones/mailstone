@@ -19,5 +19,5 @@ public interface IGlobal {
                         + SEPARATOR + "save";
 
         // x000 Message save
-        String CODE_SAVE_OBJECT = "000";
+        String CODE_SAVE_OBJECT = "s000";
 }

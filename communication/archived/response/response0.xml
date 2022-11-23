@@ -1,74 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE issues SYSTEM "C:\Users\Administrateur\Desktop\PROJECT MAILSTONE\2app\communication\DTD\response\response.dtd">
 <issues code="r001">
     <issue>
         <product>
-            <ref>1234</ref>
-            <date>21-11-2022</date>
-            <name>ordinateur</name>
+            <ref>000</ref>
+            <date>22-11-2022</date>
+            <name>reference</name>
             <brand>toshiba</brand>
             <category>
                 <name/>
             </category>
             <client>
-                <firstname>Mail</firstname>
-                <lastname>Stone</lastname>
-                <email>mailstone2022@gmail.com</email>
+                <firstname>Idriss</firstname>
+                <lastname>Benguezzou</lastname>
+                <email>idrissbenguezzou@gmail.com</email>
                 <address/>
                 <phoneNumber/>
             </client>
         </product>
-        <description>  mon ordinateur ne s allume  plus à cause de mohamed rouabah  </description>
-        <resolved>true</resolved>
-        <solution>
-            <description>Bonne question</description>
-            <cost>150</cost>
-            <duration>5</duration>
-        </solution>
-    </issue>
-    <issue>
-        <product>
-            <ref>1234</ref>
-            <date>21-11-2022</date>
-            <name>ecran</name>
-            <brand>lg</brand>
-            <category>
-                <name/>
-            </category>
-            <client>
-                <firstname>Mail</firstname>
-                <lastname>Stone</lastname>
-                <email>mailstone2022@gmail.com</email>
-                <address/>
-                <phoneNumber/>
-            </client>
-        </product>
-        <description>  mon ordinateur ne s allume plus à  cause de mohamed rouabah  </description>
-        <resolved>false</resolved>
-        <solution>
-            <description/>
-            <cost/>
-            <duration/>
-        </solution>
-    </issue>
-    <issue>
-        <product>
-            <ref>1234</ref>
-            <date>21-11-2022</date>
-            <name>ordinateur</name>
-            <brand>toshiba</brand>
-            <category>
-                <name/>
-            </category>
-            <client>
-                <firstname>Mail</firstname>
-                <lastname>Stone</lastname>
-                <email>mailstone2022@gmail.com</email>
-                <address/>
-                <phoneNumber/>
-            </client>
-        </product>
-        <description>  mon ordinateur ne s allume  plus à cause de mohamed rouabah  </description>
+        <description>Mon pc affiche un écran noir  il ne s allume plus   </description>
         <resolved>false</resolved>
         <solution>
             <description/>

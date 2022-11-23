@@ -19,8 +19,8 @@ public class MailService {
     public void send(Mail m) {
 
         // SENDER
-        final String username = "mailstone2022@gmail.com";
-        final String password = "dtdxbgmdobizcyqf";
+        final String username = "idrissbenguezzou@gmail.com";
+        final String password = "vtclhroghazqboko";
 
         Properties prop = new Properties();
 
@@ -39,7 +39,7 @@ public class MailService {
         try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("mailstone2022@gmail.com"));
+            message.setFrom(new InternetAddress("Idriss Benguezzou <idrissbenguezzou@gmail.com>"));
 
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("mailstone2022@gmail.com"));
 
